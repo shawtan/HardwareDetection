@@ -14,6 +14,17 @@ $( document ).ready( function() {
 	drawTable();
 	detect();
 	drawTable();
+
+
+	var test = document.getElementById("outer");
+
+function whatClicked(evt) {
+    alert(evt.target.id);
+    drawTable();
+}
+
+test.addEventListener("click", whatClicked, false);
+
 } );
 
 function drawTable() {
