@@ -1,0 +1,58 @@
+body {
+}
+
+.outer {
+	width: 800px;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+table  {
+	border: 1px solid #aaa;
+    border-collapse: collapse;
+    border-spacing: 0px;
+    border-radius: 10px;
+}
+
+tr {
+	border: 1px solid #ccc;
+    border-collapse: collapse;
+    border-spacing: 0px;
+}
+
+thead {
+	font-weight: normal;
+}
+
+th {
+	/*height: 50px;*/
+	text-align: left;
+	padding: 10px;
+}
+
+td {
+	padding: 10px;
+}
+
+.requirement {
+	width: 60%;
+}
+.status {
+	color: #fff;
+}
+
+.pass {
+	background-color: #5CB85C;
+
+}
+
+.fail {
+	background-color: #ff0000;
+}
+
+.neutral {
+	background-color: #aaa;
+}
