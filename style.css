@@ -37,6 +37,10 @@ td {
 	padding: 10px;
 }
 
+.version {
+	font-size: 14px;
+}
+
 .requirement {
 	width: 60%;
 }

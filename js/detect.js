@@ -41,89 +41,90 @@ function detectBrowser() {
 		}
 	}
 		// trim the fullVersion string at semicolon/space if present
-	if ((ix=fullVersion.indexOf(";"))!=-1)
-	fullVersion=fullVersion.substring(0,ix);
-	if ((ix=fullVersion.indexOf(" "))!=-1)
+		if ((ix=fullVersion.indexOf(";"))!=-1)
 		fullVersion=fullVersion.substring(0,ix);
+		if ((ix=fullVersion.indexOf(" "))!=-1)
+			fullVersion=fullVersion.substring(0,ix);
 
-	majorVersion = parseInt(''+fullVersion,10);
-	if (isNaN(majorVersion)) {
-		fullVersion  = ''+parseFloat(navigator.appVersion); 
-		majorVersion = parseInt(navigator.appVersion,10);
+		majorVersion = parseInt(''+fullVersion,10);
+		if (isNaN(majorVersion)) {
+			fullVersion  = ''+parseFloat(navigator.appVersion); 
+			majorVersion = parseInt(navigator.appVersion,10);
+		}
+
+		properties["browser"].value = browserName;
+		properties["browser"].version = fullVersion;
+		properties["browser"].pass = (browserName == "Microsoft Internet Explorer");
+
 	}
 
-	properties["browser"].value = browserName;
-	properties["browser"].version = fullVersion;
-	if (browserName == "Microsoft Internet Explorer"){
-		properties["browser"].pass = true;
+	function detectScreen() {
+		var screenW = 640, screenH = 480;
+		if (parseInt(navigator.appVersion)>3) {
+			screenW = screen.width;
+			screenH = screen.height;
+		}
+		else if (navigator.appName == "Netscape" 
+			&& parseInt(navigator.appVersion)==3
+			&& navigator.javaEnabled()
+			) 
+		{
+			var jToolkit = java.awt.Toolkit.getDefaultToolkit();
+			var jScreenSize = jToolkit.getScreenSize();
+			screenW = jScreenSize.width;
+			screenH = jScreenSize.height;
+		}
+
+		properties["screen"].value = screenW + "x" + screenH;
+
+		properties["screen"].version = screen.colorDepth + "-bit colour"
+
+		properties['screen'].pass = (screenW >= 1280 && screenH >= 800);
 	}
-}
 
-function detectScreen() {
-	var screenW = 640, screenH = 480;
-	if (parseInt(navigator.appVersion)>3) {
-		screenW = screen.width;
-		screenH = screen.height;
+
+	function detectOS() {
+		var os = 'unknown';
+		var clientStrings = [
+		{s:'Windows 3.11', r:/Win16/, pass:false},
+		{s:'Windows 95', r:/(Windows 95|Win95|Windows_95)/, pass:false},
+		{s:'Windows ME', r:/(Win 9x 4.90|Windows ME)/, pass:false},
+		{s:'Windows 98', r:/(Windows 98|Win98)/, pass:false},
+		{s:'Windows CE', r:/Windows CE/, pass:false},
+		{s:'Windows 2000', r:/(Windows NT 5.0|Windows 2000)/, pass:false},
+		{s:'Windows XP', r:/(Windows NT 5.1|Windows XP)/, pass:true},
+		{s:'Windows Server 2003', r:/Windows NT 5.2/, pass:false},
+		{s:'Windows Vista', r:/Windows NT 6.0/, pass:true},
+		{s:'Windows 7', r:/(Windows 7|Windows NT 6.1)/, pass:true},
+		{s:'Windows 8.1', r:/(Windows 8.1|Windows NT 6.3)/, pass:true},
+		{s:'Windows 8', r:/(Windows 8|Windows NT 6.2)/, pass:true},
+		{s:'Windows NT 4.0', r:/(Windows NT 4.0|WinNT4.0|WinNT|Windows NT)/, pass:false},
+		{s:'Windows ME', r:/Windows ME/, pass:false},
+		{s:'Android', r:/Android/, pass:false},
+		{s:'Open BSD', r:/OpenBSD/, pass:false},
+		{s:'Sun OS', r:/SunOS/, pass:false},
+		{s:'Linux', r:/(Linux|X11)/, pass:false},
+		{s:'iOS', r:/(iPhone|iPad|iPod)/, pass:false},
+		{s:'Mac OS X', r:/Mac OS X/, pass:false},
+		{s:'Mac OS', r:/(MacPPC|MacIntel|Mac_PowerPC|Macintosh)/, pass:false},
+		{s:'QNX', r:/QNX/, pass:false},
+		{s:'UNIX', r:/UNIX/, pass:false},
+		{s:'BeOS', r:/BeOS/, pass:false},
+		{s:'OS/2', r:/OS\/2/, pass:false},
+		{s:'Search Bot', r:/(nuhk|Googlebot|Yammybot|Openbot|Slurp|MSNBot|Ask Jeeves\/Teoma|ia_archiver)/}
+		];
+		for (var id in clientStrings) {
+			var cs = clientStrings[id];
+			if (cs.r.test(navigator.userAgent)) {
+				properties["os"].value = cs.s;
+				properties["os"].pass = cs.pass;
+				return;
+			}
+		}
+		properties["os"].pass = false;
 	}
-	else if (navigator.appName == "Netscape" 
-		&& parseInt(navigator.appVersion)==3
-		&& navigator.javaEnabled()
-		) 
-	{
-		var jToolkit = java.awt.Toolkit.getDefaultToolkit();
-		var jScreenSize = jToolkit.getScreenSize();
-		screenW = jScreenSize.width;
-		screenH = jScreenSize.height;
-	}
 
-	properties["screen"].value = screenW + "x" + screenH;
-	if (screenW >= 1280 && screenH >= 800){
-		properties['screen'].pass = true;
-	}
-}
-
-
-function detectOS() {
-	var os = 'unknown';
-    var clientStrings = [
-    {s:'Windows 3.11', r:/Win16/, pass:false},
-    {s:'Windows 95', r:/(Windows 95|Win95|Windows_95)/, pass:false},
-    {s:'Windows ME', r:/(Win 9x 4.90|Windows ME)/, pass:false},
-    {s:'Windows 98', r:/(Windows 98|Win98)/, pass:false},
-    {s:'Windows CE', r:/Windows CE/, pass:false},
-    {s:'Windows 2000', r:/(Windows NT 5.0|Windows 2000)/, pass:false},
-    {s:'Windows XP', r:/(Windows NT 5.1|Windows XP)/, pass:true},
-    {s:'Windows Server 2003', r:/Windows NT 5.2/, pass:false},
-    {s:'Windows Vista', r:/Windows NT 6.0/, pass:true},
-    {s:'Windows 7', r:/(Windows 7|Windows NT 6.1)/, pass:true},
-    {s:'Windows 8.1', r:/(Windows 8.1|Windows NT 6.3)/, pass:true},
-    {s:'Windows 8', r:/(Windows 8|Windows NT 6.2)/, pass:true},
-    {s:'Windows NT 4.0', r:/(Windows NT 4.0|WinNT4.0|WinNT|Windows NT)/, pass:false},
-    {s:'Windows ME', r:/Windows ME/, pass:false},
-    {s:'Android', r:/Android/, pass:false},
-    {s:'Open BSD', r:/OpenBSD/, pass:false},
-    {s:'Sun OS', r:/SunOS/, pass:false},
-    {s:'Linux', r:/(Linux|X11)/, pass:false},
-    {s:'iOS', r:/(iPhone|iPad|iPod)/, pass:false},
-    {s:'Mac OS X', r:/Mac OS X/, pass:false},
-    {s:'Mac OS', r:/(MacPPC|MacIntel|Mac_PowerPC|Macintosh)/, pass:false},
-    {s:'QNX', r:/QNX/, pass:false},
-    {s:'UNIX', r:/UNIX/, pass:false},
-    {s:'BeOS', r:/BeOS/, pass:false},
-    {s:'OS/2', r:/OS\/2/, pass:false},
-    {s:'Search Bot', r:/(nuhk|Googlebot|Yammybot|Openbot|Slurp|MSNBot|Ask Jeeves\/Teoma|ia_archiver)/}
-    ];
-    for (var id in clientStrings) {
-    	var cs = clientStrings[id];
-    	if (cs.r.test(navigator.userAgent)) {
-    		properties["os"].value = cs.s;
-    		properties["os"].pass = cs.pass;
-    		return;
-    	}
-    }
-}
-
-function detectJava() {
+	function detectJava() {
 	// Requires 1.7.0_71 or above, 32-bit
 	if (navigator.javaEnabled()){
 		var v = deployJava.getJREs()[0];
@@ -153,11 +154,78 @@ function detectJava() {
 			return;		
 		}
 
-
-
 	} else {
 		properties['java'].value = "Unavailiable";
 		properties['java'].pass = false;
 	}
+
+}
+
+function detectJavaBit() {
+
+	var arch = javaApp.getBit();
+
+	if (arch.indexOf("64")<0){
+		properties['java'].version += ', 32-bit';
+		properties['java'].pass = true;
+	} else {
+		properties['java'].version += ' 64-bit';
+		properties['java'].pass = false;
+	}
+
+}
+
+function detectUsingJava() {
+
+	detectJavaBit();
+	// detectCPU();
+	// detectGPU();
+	// detectHD();
+	detectRAM();
+	// console.log("Bit rate: " + javaApp.getBit());
+
+}
+
+function detectCPU() {
+
+	var cpu = javaApp.getCPUSpeed();
+	var cpuName = javaApp.getCPUName();
+
+	properties["cpu"].value = cpuName;
+	properties["cpu"].desc = cpu/1000.0 + " GHz";
+
+	properties["cpu"].pass = (cpu >= 1.95); //Rounding
+
+
+}
+
+
+function detectRAM() {
+
+	var ram = javaApp.getRAM();
+
+	properties["ram"].value = (ram / 1073741824).toPrecision(3) + " GB";
+
+	properties["ram"].pass = (ram >= 2147483648);
+
+}
+
+
+function detectHD() {
+
+	var hd = javaApp.getHardDrive();
+
+	properties["hd"].value = hd / 1000000000 + " GB";
+
+	properties["hd"].pass = (hd >= 5000000000);
+
+}
+
+
+function detectGPU() {
+
+	var gpu = javaApp.getGPUName();
+
+	properties["gpu"].value = gpu;
 
 }

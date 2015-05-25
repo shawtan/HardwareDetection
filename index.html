@@ -10,6 +10,8 @@
 
 	<div id="outer">
 		<h1>Hardware Detector</h1>
+		<noscript>A browser with JavaScript enabled is required for this page to operate properly.</noscript>
+
 
 		<div id="detectAdobeRdr_output"></div>
 		<div id="javaresult"></div>
@@ -39,17 +41,28 @@
 							Failed
 						</td>
 					</tr>
-				</tbody>
-			</table>
+				</tbody
+>			</table>
 		</div>
 
 	</div>
+<!--
+	<object id="javaApp"
+	classid="clsid:8AD9C840-044E-11D1-B3E9-00805F499D93"
+	width="200" height="200">
+	<param name="archive" value="java.jar" />
+	<PARAM name="code" value="HelloWorld.class">
+	</object> -->
 
-	<object
-		classid="clsid:8AD9C840-044E-11D1-B3E9-00805F499D93"
-  width="200" height="200">
-  <PARAM name="code" value="HelloWorld.class">
-	</object>
+	<applet 
+	id = 'javaApp'
+	code = 'HelloWorld' 
+    archive = 'java.jar'
+    width = 300
+    height = 300>
+    <param name="permissions" value="sandbox" />
+    Your browser does not support Applets!
+	</applet>
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="js/script.js"></script>
