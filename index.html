@@ -4,23 +4,18 @@
 	<meta charset="utf-8">
 	<title>Hardware Detector</title>
 	<link rel="stylesheet" href="style.css">
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,300' rel='stylesheet' type='text/css'>
 
 </head>
 <body>
 
-	<div id="outer">
+	<div class="outer">
 		<h1>Hardware Detector</h1>
-		<noscript>A browser with JavaScript enabled is required for this page to operate properly.</noscript>
+		<noscript>A browser with <a href="https://support.microsoft.com/en-ca/gp/howtoscript">JavaScript</a> enabled is required for this page to operate properly.<br><br></noscript>
 
-
-		<div id="detectAdobeRdr_output"></div>
-		<div id="javaresult"></div>
-		<div id="hardware"></div>
-
-
+		This tool will check and determine if your workstation meets the system requirements required. Please accept all the security warnings to allow the tool to function. You can click on any of the requirements to learn how to meet the requirements.
 
 		<div id="property">
-
 			<table>
 				<thead>
 					<tr>
@@ -38,14 +33,14 @@
 							Not enabled
 						</td>
 						<td class="status fail">
-							Failed
+							<a href="https://support.microsoft.com/en-ca/gp/howtoscript">
+								Failed
+							</a>
 						</td>
 					</tr>
-				</tbody
->			</table>
+				</tbody>
+			</table>
 		</div>
-
-	</div>
 <!--
 	<object id="javaApp"
 	classid="clsid:8AD9C840-044E-11D1-B3E9-00805F499D93"
@@ -61,18 +56,14 @@
     width = 300
     height = 300>
     <param name="permissions" value="sandbox" />
+    <a href="https://java.com/en/download/help/enable_browser.xml">
     Your browser does not support Applets!
+    </a>
 	</applet>
+	</div>
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="js/script.js"></script>
 	<script src="js/detect.js"></script>
-	<script src="http://www.java.com/js/deployJava.js"></script>
-	<!--
-	<script src="PluginDetect.js"></script>
-	<script src="detectAdobeReader.js"></script>
-	<script src="PluginDetect_AdobeReader.js"></script>
-	<script src="PluginDetect_Java.js"></script>
-	<script src="VerifyApplet.js"></script> -->
 </body>
 </html>

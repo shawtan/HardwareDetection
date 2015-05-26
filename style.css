@@ -1,16 +1,19 @@
 body {
+
+	font-family: 'Open Sans', sans-serif;
 }
 
 .outer {
 	width: 800px;
+	margin: 0 auto;
+}
+
+h1 {
+	text-align: center;
 }
 
 table {
 	width: 100%;
-	border-collapse: collapse;
-}
-
-table  {
 	border: 1px solid #aaa;
     border-collapse: collapse;
     border-spacing: 0px;
@@ -23,11 +26,11 @@ tr {
     border-spacing: 0px;
 }
 
-thead {
-	font-weight: normal;
+thead tr th {
+	text-align: center;
 }
 
-th {
+tr th {
 	/*height: 50px;*/
 	text-align: left;
 	padding: 10px;
@@ -37,15 +40,19 @@ td {
 	padding: 10px;
 }
 
-.version {
+.small {
 	font-size: 14px;
+	font-weight: 300;
 }
 
 .requirement {
-	width: 60%;
+	width: 50%;
 }
 .status {
 	color: #fff;
+	cursor: pointer;
+	font-weight: 600;
+	text-align: center;
 }
 
 .pass {

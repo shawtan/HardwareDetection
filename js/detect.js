@@ -41,127 +41,141 @@ function detectBrowser() {
 		}
 	}
 		// trim the fullVersion string at semicolon/space if present
-		if ((ix=fullVersion.indexOf(";"))!=-1)
+	if ((ix=fullVersion.indexOf(";"))!=-1)
 		fullVersion=fullVersion.substring(0,ix);
-		if ((ix=fullVersion.indexOf(" "))!=-1)
-			fullVersion=fullVersion.substring(0,ix);
+	if ((ix=fullVersion.indexOf(" "))!=-1)
+		fullVersion=fullVersion.substring(0,ix);
 
-		majorVersion = parseInt(''+fullVersion,10);
-		if (isNaN(majorVersion)) {
-			fullVersion  = ''+parseFloat(navigator.appVersion); 
-			majorVersion = parseInt(navigator.appVersion,10);
-		}
-
-		properties["browser"].value = browserName;
-		properties["browser"].version = fullVersion;
-		properties["browser"].pass = (browserName == "Microsoft Internet Explorer");
-
+	majorVersion = parseInt(''+fullVersion,10);
+	if (isNaN(majorVersion)) {
+		fullVersion  = ''+parseFloat(navigator.appVersion); 
+		majorVersion = parseInt(navigator.appVersion,10);
 	}
 
-	function detectScreen() {
-		var screenW = 640, screenH = 480;
-		if (parseInt(navigator.appVersion)>3) {
-			screenW = screen.width;
-			screenH = screen.height;
-		}
-		else if (navigator.appName == "Netscape" 
-			&& parseInt(navigator.appVersion)==3
-			&& navigator.javaEnabled()
-			) 
-		{
-			var jToolkit = java.awt.Toolkit.getDefaultToolkit();
-			var jScreenSize = jToolkit.getScreenSize();
-			screenW = jScreenSize.width;
-			screenH = jScreenSize.height;
-		}
-
-		properties["screen"].value = screenW + "x" + screenH;
-
-		properties["screen"].version = screen.colorDepth + "-bit colour"
-
-		properties['screen'].pass = (screenW >= 1280 && screenH >= 800);
-	}
-
-
-	function detectOS() {
-		var os = 'unknown';
-		var clientStrings = [
-		{s:'Windows 3.11', r:/Win16/, pass:false},
-		{s:'Windows 95', r:/(Windows 95|Win95|Windows_95)/, pass:false},
-		{s:'Windows ME', r:/(Win 9x 4.90|Windows ME)/, pass:false},
-		{s:'Windows 98', r:/(Windows 98|Win98)/, pass:false},
-		{s:'Windows CE', r:/Windows CE/, pass:false},
-		{s:'Windows 2000', r:/(Windows NT 5.0|Windows 2000)/, pass:false},
-		{s:'Windows XP', r:/(Windows NT 5.1|Windows XP)/, pass:true},
-		{s:'Windows Server 2003', r:/Windows NT 5.2/, pass:false},
-		{s:'Windows Vista', r:/Windows NT 6.0/, pass:true},
-		{s:'Windows 7', r:/(Windows 7|Windows NT 6.1)/, pass:true},
-		{s:'Windows 8.1', r:/(Windows 8.1|Windows NT 6.3)/, pass:true},
-		{s:'Windows 8', r:/(Windows 8|Windows NT 6.2)/, pass:true},
-		{s:'Windows NT 4.0', r:/(Windows NT 4.0|WinNT4.0|WinNT|Windows NT)/, pass:false},
-		{s:'Windows ME', r:/Windows ME/, pass:false},
-		{s:'Android', r:/Android/, pass:false},
-		{s:'Open BSD', r:/OpenBSD/, pass:false},
-		{s:'Sun OS', r:/SunOS/, pass:false},
-		{s:'Linux', r:/(Linux|X11)/, pass:false},
-		{s:'iOS', r:/(iPhone|iPad|iPod)/, pass:false},
-		{s:'Mac OS X', r:/Mac OS X/, pass:false},
-		{s:'Mac OS', r:/(MacPPC|MacIntel|Mac_PowerPC|Macintosh)/, pass:false},
-		{s:'QNX', r:/QNX/, pass:false},
-		{s:'UNIX', r:/UNIX/, pass:false},
-		{s:'BeOS', r:/BeOS/, pass:false},
-		{s:'OS/2', r:/OS\/2/, pass:false},
-		{s:'Search Bot', r:/(nuhk|Googlebot|Yammybot|Openbot|Slurp|MSNBot|Ask Jeeves\/Teoma|ia_archiver)/}
-		];
-		for (var id in clientStrings) {
-			var cs = clientStrings[id];
-			if (cs.r.test(navigator.userAgent)) {
-				properties["os"].value = cs.s;
-				properties["os"].pass = cs.pass;
-				return;
-			}
-		}
-		properties["os"].pass = false;
-	}
-
-	function detectJava() {
-	// Requires 1.7.0_71 or above, 32-bit
-	if (navigator.javaEnabled()){
-		var v = deployJava.getJREs()[0];
-
-		properties["java"].value = "Enabled";
-		properties['java'].version = v;
-
-		v = v.substring(v.indexOf('.')+1);
-		var major = parseInt(v);
-
-		if (major > 7) {
-			properties['java'].pass = true;
-			return;
-		} else if (major < 7) {
-			properties['java'].pass = false;
-			return;		
-		}
-
-		v = v.substring(v.indexOf('_')+1);
-		var rev = parseInt(v);
-
-		if (rev >= 71) {
-			properties['java'].pass = true;
-			return;
-		} else {
-			properties['java'].pass = false;
-			return;		
-		}
-
-	} else {
-		properties['java'].value = "Unavailiable";
-		properties['java'].pass = false;
-	}
+	properties["browser"].value = browserName;
+	properties["browser"].version = fullVersion;
+	properties["browser"].pass = (browserName == "Microsoft Internet Explorer");
 
 }
 
-function detectJavaBit() {
+function detectScreen() {
+	var screenW = 640, screenH = 480;
+	if (parseInt(navigator.appVersion)>3) {
+		screenW = screen.width;
+		screenH = screen.height;
+	}
+	else if (navigator.appName == "Netscape" 
+		&& parseInt(navigator.appVersion)==3
+		&& navigator.javaEnabled()
+		) 
+	{
+		var jToolkit = java.awt.Toolkit.getDefaultToolkit();
+		var jScreenSize = jToolkit.getScreenSize();
+		screenW = jScreenSize.width;
+		screenH = jScreenSize.height;
+	}
+
+	properties["screen"].value = screenW + "x" + screenH;
+
+	properties["screen"].version = screen.colorDepth + "-bit colour"
+
+	properties['screen'].pass = (screenW >= 1280 && screenH >= 800);
+}
+
+
+function detectOS() {
+	var os = 'unknown';
+	var clientStrings = [
+	{s:'Windows 3.11', r:/Win16/, pass:false},
+	{s:'Windows 95', r:/(Windows 95|Win95|Windows_95)/, pass:false},
+	{s:'Windows ME', r:/(Win 9x 4.90|Windows ME)/, pass:false},
+	{s:'Windows 98', r:/(Windows 98|Win98)/, pass:false},
+	{s:'Windows CE', r:/Windows CE/, pass:false},
+	{s:'Windows 2000', r:/(Windows NT 5.0|Windows 2000)/, pass:false},
+	{s:'Windows XP', r:/(Windows NT 5.1|Windows XP)/, pass:true},
+	{s:'Windows Server 2003', r:/Windows NT 5.2/, pass:false},
+	{s:'Windows Vista', r:/Windows NT 6.0/, pass:true},
+	{s:'Windows 7', r:/(Windows 7|Windows NT 6.1)/, pass:true},
+	{s:'Windows 8.1', r:/(Windows 8.1|Windows NT 6.3)/, pass:true},
+	{s:'Windows 8', r:/(Windows 8|Windows NT 6.2)/, pass:true},
+	{s:'Windows NT 4.0', r:/(Windows NT 4.0|WinNT4.0|WinNT|Windows NT)/, pass:false},
+	{s:'Windows ME', r:/Windows ME/, pass:false},
+	{s:'Android', r:/Android/, pass:false},
+	{s:'Open BSD', r:/OpenBSD/, pass:false},
+	{s:'Sun OS', r:/SunOS/, pass:false},
+	{s:'Linux', r:/(Linux|X11)/, pass:false},
+	{s:'iOS', r:/(iPhone|iPad|iPod)/, pass:false},
+	{s:'Mac OS X', r:/Mac OS X/, pass:false},
+	{s:'Mac OS', r:/(MacPPC|MacIntel|Mac_PowerPC|Macintosh)/, pass:false},
+	{s:'QNX', r:/QNX/, pass:false},
+	{s:'UNIX', r:/UNIX/, pass:false},
+	{s:'BeOS', r:/BeOS/, pass:false},
+	{s:'OS/2', r:/OS\/2/, pass:false},
+	{s:'Search Bot', r:/(nuhk|Googlebot|Yammybot|Openbot|Slurp|MSNBot|Ask Jeeves\/Teoma|ia_archiver)/}
+	];
+	for (var id in clientStrings) {
+		var cs = clientStrings[id];
+		if (cs.r.test(navigator.userAgent)) {
+			properties["os"].value = cs.s;
+			properties["os"].pass = cs.pass;
+			return;
+		}
+	}
+	properties["os"].pass = false;
+}
+
+function detectPDF() {
+
+	var p = navigator.mimeTypes["application/pdf"];
+	if (p == null) {
+
+		var o = new ActiveXObject('AcroPDF.PDF');
+		if (o == null) {
+			properties["pdf"].value = "Not detected";
+			properties["pdf"].pass = false;
+			return;
+		}
+
+		var v = o.GetVersions();
+		var ver = parseFloat(v.substring(v.indexOf('=')+1));
+		properties["pdf"].value = 'Adobe Reader';
+		properties["pdf"].version = ver;
+		properties["pdf"].pass = (ver >= 9);
+		return;
+
+	}
+
+	p = p.enabledPlugin;
+	properties["pdf"].value = p.name;
+	properties["pdf"].version = p.version;
+
+	if (p.name.indexOf('Adobe') >=0) {
+		properties["pdf"].pass = (parseInt(p.version) >= 9);
+	} else {
+		properties["pdf"].pass = false;
+
+	}
+}
+
+function detectLang() {
+
+	var lang = navigator.userLanguage || navigator.language;
+	
+	properties["lang"].value = lang;
+	properties["lang"].pass = (lang == 'en-CA');
+	
+
+}
+
+function detectJava() {
+// Requires 1.7.0_71 or above, 32-bit
+	var v = javaApp.getJRE();
+
+	properties["java"].value = "Enabled";
+	properties['java'].version = v;
+
+	v = v.substring(v.indexOf('.')+1);
+	var major = parseInt(v);
 
 	var arch = javaApp.getBit();
 
@@ -171,31 +185,51 @@ function detectJavaBit() {
 	} else {
 		properties['java'].version += ' 64-bit';
 		properties['java'].pass = false;
+		return;
 	}
 
-}
+	if (major > 7) {
+		properties['java'].pass = true;
+		return;
+	} else if (major < 7) {
+		properties['java'].pass = false;
+		return;		
+	}
+
+	v = v.substring(v.indexOf('_')+1);
+	var rev = parseInt(v);
+
+	if (rev >= 71) {
+		properties['java'].pass = true;
+		return;
+	} else {
+		properties['java'].pass = false;
+		return;		
+	}
+} 
 
 function detectUsingJava() {
 
-	detectJavaBit();
-	// detectCPU();
-	// detectGPU();
-	// detectHD();
-	detectRAM();
-	// console.log("Bit rate: " + javaApp.getBit());
+	if (navigator.javaEnabled()){
+		detectJava();
+		detectRAM();
+	} else {
+		properties['java'].value = "Unavailiable";
+		properties['java'].pass = false;
+	}
 
 }
 
 function detectCPU() {
 
-	var cpu = javaApp.getCPUSpeed();
-	var cpuName = javaApp.getCPUName();
+	var WshShell = new ActiveXObject("WScript.Shell");
+	var cpu = WshShell.RegRead("HKLM\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0\\~MHz");
+	var cpuName = WshShell.RegRead("HKLM\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0\\ProcessorNameString");
 
 	properties["cpu"].value = cpuName;
-	properties["cpu"].desc = cpu/1000.0 + " GHz";
+	properties["cpu"].version = ((cpu+5)/1000).toPrecision(3) + " GHz";
 
-	properties["cpu"].pass = (cpu >= 1.95); //Rounding
-
+	properties["cpu"].pass = (cpu >= 1.95); //Rounding*/
 
 }
 
@@ -204,9 +238,9 @@ function detectRAM() {
 
 	var ram = javaApp.getRAM();
 
-	properties["ram"].value = (ram / 1073741824).toPrecision(3) + " GB";
+	properties["ram"].value = (ram / 1073741824 ).toPrecision(3) + " GB";
 
-	properties["ram"].pass = (ram >= 2147483648);
+	properties["ram"].pass = (ram >= 2147483648);	//2^30
 
 }
 
@@ -224,8 +258,70 @@ function detectHD() {
 
 function detectGPU() {
 
-	var gpu = javaApp.getGPUName();
+	var WshShell = new ActiveXObject("WScript.Shell");
+	var path = "HKLM\\HARDWARE\\DEVICEMAP\\VIDEO\\";
+    // var keyRegex = /HKLM\\SYSTEM\\CurrentControlSet\\Control\\Video\\(.*?)\\0000\AdapterDesc/
+    //"HKLM\\HARDWARE\\DEVICEMAP\\VIDEO\\Device\\Video";
+    var rtn = regGetSubKeys(".","SYSTEM\\CurrentControlSet\\Control\\Video");
 
-	properties["gpu"].value = gpu;
+    if ( rtn == 0 ) 
+    { 
+    	for (var idx=0;idx<rtn.length;idx++) 
+    	{ 
+    		console.log(rtn[idx]); 
+    	} 
+    } 
 
+    for (var i = 0; i < rtn.length; i++) {
+    	try {
+    		var gpu = WshShell.RegRead("HKLM\\SYSTEM\\CurrentControlSet\\Control\\Video\\"+rtn[i]+"\\0000\\AdapterDesc");
+    		properties["gpu"].value = gpu;
+    		return;
+
+    	} catch (e) {
+    		console.log(e);
+    		continue;
+    	}
+    };
+
+	// var gpu = javaApp.getGPUName();
+
+
+}
+
+var HKLM = 0x80000002; 
+//------------------------------------------------------------- 
+// function : regGetSubKeyNames(strComputer, strRegPath) 
+// 
+//  purpose : return an array with names of any subKeys 
+//------------------------------------------------------------- 
+function regGetSubKeys(strComputer, strRegPath) 
+{ 
+//  try 
+//  { 
+	var aNames = null; 
+	var objLocator     = new ActiveXObject("WbemScripting.SWbemLocator"); 
+	var objService     = objLocator.ConnectServer(strComputer, "root\\default"); 
+	var objReg         = objService.Get("StdRegProv"); 
+	var objMethod      = objReg.Methods_.Item("EnumKey"); 
+	var objInParam     = objMethod.InParameters.SpawnInstance_(); 
+	objInParam.hDefKey = HKLM; 
+	objInParam.sSubKeyName = strRegPath; 
+	var objOutParam = objReg.ExecMethod_(objMethod.Name, objInParam); 
+	switch(objOutParam.ReturnValue) 
+	{ 
+      case 0:          // Success 
+      aNames = (objOutParam.sNames != null) ? objOutParam.sNames.toArray(): null; 
+      break; 
+
+      case 2:        // Not Found 
+      aNames = null; 
+      break; 
+  } 
+  return aNames;
+//  } 
+//  catch(e)   
+//  {  
+//    return { Results: e.number, SubKeys : e.description }  
+//  } 
 }
