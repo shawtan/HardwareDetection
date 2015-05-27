@@ -1,0 +1,1 @@
+permission java.lang.RuntimePermission "getFileSystemAttributes";

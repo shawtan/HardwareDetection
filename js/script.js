@@ -1,3 +1,5 @@
+var	javaLoaded = false;
+
 $( document ).ready( function() { 
 	
 	// The requirements, and what software/hardware the user has
@@ -9,15 +11,17 @@ $( document ).ready( function() {
 		"cpu":{str:"CPU", req:"2.0+ GHz", value:"Unknown", version:null, pass:null, url:null},
 		"ram":{str:"RAM", req:"2+ GB", value:"Unknown", version:null, pass:null, url:null},
 		"hd":{str:"Hard Drive", req:"5+ GB available", value:"Unknown", version:null, pass:null, url:null},
-		"gpu":{str:"Video Card", req:null, value:"Unknown", version:null, pass:null, url:null},
+		"gpu":{str:"Video Card", req:null, value:"Unknown", version:null, pass:null, url:"http://www.videocardbenchmark.net/gpu_list.php"},
 		"pdf":{str:"PDF Reader", req:"Adobe Reader 9.0+", value:"Unknown", version:null, pass:null, url:"https://get.adobe.com/reader/"},
 		"lang":{str:"Language", req:"English (CA)", value:"Unknown", version:null, pass:null, url:"http://windows.microsoft.com/en-ca/windows-vista/change-your-internet-explorer-language-settings"}};
+
 
 	drawTable();
 	detect();
 	drawTable();
 
 	$('tr').click(function() {
+		console.log(javaLoaded);
 		var id = $(this).attr('id');
 		if (properties[id].pass) {
 			return;
@@ -28,8 +32,7 @@ $( document ).ready( function() {
 		}
 	});
 
-	// Try to open a pop-up. Hopefully it triggers the option to disable popup blockers
-	window.open("about:blank").close();
+	console.log(properties);
 
 } );
 
@@ -58,6 +61,7 @@ function drawTable() {
  */
 function detect() {
 	
+	detectPopup();
 	detectBrowser();
 	detectScreen();
 	detectOS();

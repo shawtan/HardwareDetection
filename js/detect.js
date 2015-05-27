@@ -1,3 +1,9 @@
+function detectPopup() {
+
+	// Try to open a pop-up. Hopefully it triggers pop-up settings
+	window.open("about:blank").close();
+}
+
 function detectBrowser() {
 	var nAgt = navigator.userAgent;
 
@@ -60,12 +66,12 @@ function detectBrowser() {
 
 function detectScreen() {
 	var screenW = 640, screenH = 480;
-	if (parseInt(navigator.appVersion)>3) {
+	if (parseInt(navigator.appVersion,10)>3) {
 		screenW = screen.width;
 		screenH = screen.height;
 	}
 	else if (navigator.appName == "Netscape" 
-		&& parseInt(navigator.appVersion)==3
+		&& parseInt(navigator.appVersion,10)==3
 		&& navigator.javaEnabled()
 		) 
 	{
@@ -124,6 +130,14 @@ function detectOS() {
 	properties["os"].pass = false;
 }
 
+function detectServicePack() {
+
+	var sp = javaApp.getServicePack();
+
+	properties["os"].version = sp;
+
+}
+
 function detectPDF() {
 
 	var p = navigator.mimeTypes["application/pdf"];
@@ -149,8 +163,8 @@ function detectPDF() {
 	properties["pdf"].value = p.name;
 	properties["pdf"].version = p.version;
 
-	if (p.name.indexOf('Adobe') >=0) {
-		properties["pdf"].pass = (parseInt(p.version) >= 9);
+	if (p.name.toUpperCase().indexOf('ADOBE') >=0) {
+		properties["pdf"].pass = (parseInt(p.version,10) >= 9);
 	} else {
 		properties["pdf"].pass = false;
 
@@ -175,7 +189,7 @@ function detectJava() {
 	properties['java'].version = v;
 
 	v = v.substring(v.indexOf('.')+1);
-	var major = parseInt(v);
+	var major = parseInt(v,10);
 
 	var arch = javaApp.getBit();
 
@@ -197,7 +211,7 @@ function detectJava() {
 	}
 
 	v = v.substring(v.indexOf('_')+1);
-	var rev = parseInt(v);
+	var rev = parseInt(v,10);
 
 	if (rev >= 71) {
 		properties['java'].pass = true;
@@ -209,12 +223,28 @@ function detectJava() {
 } 
 
 function detectUsingJava() {
-
 	if (navigator.javaEnabled()){
+
+		try {
+			javaApp.getNum();
+		} catch (e) {	// When the app is not loaded
+    		// console.log(e);
+			properties['java'].value = "Unavailiable";
+			properties['java'].version = "Try refreshing the page";
+			properties['java'].pass = false;
+			return;
+		}
+
 		detectJava();
 		detectRAM();
+		detectHD();
+
+		if (properties['os'].pass){
+			detectServicePack();
+		}
+
 	} else {
-		properties['java'].value = "Unavailiable";
+		properties['java'].value = "Not Enabled";
 		properties['java'].pass = false;
 	}
 
@@ -248,10 +278,14 @@ function detectRAM() {
 function detectHD() {
 
 	var hd = javaApp.getHardDrive();
+	// console.log(hd);
 
-	properties["hd"].value = hd / 1000000000 + " GB";
+	properties["hd"].value = (hd / 1000000000).toPrecision(3) + " GB";
 
 	properties["hd"].pass = (hd >= 5000000000);
+
+	var total = javaApp.getHardDriveTotal();
+	properties["hd"].version = (total / 1000000000).toPrecision(3) + " GB Hard Drive"
 
 }
 
@@ -263,14 +297,6 @@ function detectGPU() {
     // var keyRegex = /HKLM\\SYSTEM\\CurrentControlSet\\Control\\Video\\(.*?)\\0000\AdapterDesc/
     //"HKLM\\HARDWARE\\DEVICEMAP\\VIDEO\\Device\\Video";
     var rtn = regGetSubKeys(".","SYSTEM\\CurrentControlSet\\Control\\Video");
-
-    if ( rtn == 0 ) 
-    { 
-    	for (var idx=0;idx<rtn.length;idx++) 
-    	{ 
-    		console.log(rtn[idx]); 
-    	} 
-    } 
 
     for (var i = 0; i < rtn.length; i++) {
     	try {
@@ -297,8 +323,6 @@ var HKLM = 0x80000002;
 //------------------------------------------------------------- 
 function regGetSubKeys(strComputer, strRegPath) 
 { 
-//  try 
-//  { 
 	var aNames = null; 
 	var objLocator     = new ActiveXObject("WbemScripting.SWbemLocator"); 
 	var objService     = objLocator.ConnectServer(strComputer, "root\\default"); 
@@ -319,9 +343,4 @@ function regGetSubKeys(strComputer, strRegPath)
       break; 
   } 
   return aNames;
-//  } 
-//  catch(e)   
-//  {  
-//    return { Results: e.number, SubKeys : e.description }  
-//  } 
 }
