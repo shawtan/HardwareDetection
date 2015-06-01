@@ -66,24 +66,24 @@ function drawTable() {
  */
 function detect() {
 
-	try {
-		detectPopup();
-		detectBrowser();
-		detectScreen();
-		detectOS();
-		detectLang();
-		detectPDF();
+	// try {
+	detectPopup();
+	detectBrowser();
+	detectScreen();
+	detectOS();
+	detectLang();
+	detectPDF();
 
-		detectUsingJava();
+	detectUsingJava();
 
-		if (properties["browser"].value === 'Microsoft Internet Explorer') { //ActiveX enabled
-		console.log("here");
-			detectCPU();
-			detectGPU();
-		}
-	} catch  (e) {
-		console.log(e);
+	if (properties["browser"].value === 'Microsoft Internet Explorer') { //ActiveX enabled
+	console.log("here");
+		detectCPU();
+		detectGPU();
 	}
+	// } catch  (e) {
+	// 	console.log(e);
+	// }
 
 	// drawTable();
 	// detectPorts();
