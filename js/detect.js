@@ -1,7 +1,12 @@
 function detectPopup() {
 
 	// Try to open a pop-up. Hopefully it triggers pop-up settings
-	window.open("about:blank").close();
+	try {
+		window.open("about:blank").close();
+	} catch (e) {
+		console.log(e);
+		alert("Your pop-up settings probably aren't enabled!");
+	}
 }
 
 function detectBrowser() {
