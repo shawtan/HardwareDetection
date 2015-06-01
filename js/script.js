@@ -34,6 +34,7 @@ $( document ).ready( function() {
 
 	// console.log(properties);
 
+
 	$('#ie-sites').click(configureIE);
 	$('#java-sites').click(configureJavaExceptions);
 	$('#java-security').click(configureJavaSecurity);
@@ -64,19 +65,24 @@ function drawTable() {
  * Gets the user information and updates the properties variable
  */
 function detect() {
-	detectPopup();
-	detectBrowser();
-	detectScreen();
-	detectOS();
-	detectLang();
-	detectPDF();
 
-	detectUsingJava();
+	try {
+		detectPopup();
+		detectBrowser();
+		detectScreen();
+		detectOS();
+		detectLang();
+		detectPDF();
 
-	if (properties["browser"].value === 'Microsoft Internet Explorer') { //ActiveX enabled
-	console.log("here");
-		detectCPU();
-		detectGPU();
+		detectUsingJava();
+
+		if (properties["browser"].value === 'Microsoft Internet Explorer') { //ActiveX enabled
+		console.log("here");
+			detectCPU();
+			detectGPU();
+		}
+	} catch  (e) {
+		console.log(e);
 	}
 
 	// drawTable();
