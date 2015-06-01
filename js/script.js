@@ -1,5 +1,3 @@
-var	javaLoaded = false;
-
 $( document ).ready( function() { 
 	
 	// The requirements, and what software/hardware the user has
@@ -11,7 +9,7 @@ $( document ).ready( function() {
 		"cpu":{str:"CPU", req:"2.0+ GHz", value:"Unknown", version:null, pass:null, url:null},
 		"ram":{str:"RAM", req:"2+ GB", value:"Unknown", version:null, pass:null, url:null},
 		"hd":{str:"Hard Drive", req:"5+ GB available", value:"Unknown", version:null, pass:null, url:null},
-		"gpu":{str:"Video Card", req:null, value:"Unknown", version:null, pass:null, url:"http://www.videocardbenchmark.net/gpu_list.php"},
+		"gpu":{str:"Video Card", req:"Intel 945/965, ATL Radeon R300 (9xxx), Nvidia Geforce FX (5xxx), OpenGL 1.5", value:"Unknown", version:null, pass:null, url:"http://www.videocardbenchmark.net/gpu_list.php"},
 		"pdf":{str:"PDF Reader", req:"Adobe Reader 9.0+", value:"Unknown", version:null, pass:null, url:"https://get.adobe.com/reader/"},
 		"lang":{str:"Language", req:"English (CA)", value:"Unknown", version:null, pass:null, url:"http://windows.microsoft.com/en-ca/windows-vista/change-your-internet-explorer-language-settings"}};
 
@@ -21,9 +19,11 @@ $( document ).ready( function() {
 	drawTable();
 
 	$('tr').click(function() {
-		console.log(javaLoaded);
 		var id = $(this).attr('id');
-		if (properties[id].pass) {
+		 // console.log(id);
+		if (id === null){
+			return;
+		} else if (properties[id].pass) {
 			return;
 		} else if (properties[id].url != null ){
 			window.open(properties[id].url);
@@ -32,7 +32,11 @@ $( document ).ready( function() {
 		}
 	});
 
-	console.log(properties);
+	// console.log(properties);
+
+	$('#ie-sites').click(configureIE);
+	$('#java-sites').click(configureJavaExceptions);
+	$('#java-security').click(configureJavaSecurity);
 
 } );
 
@@ -60,19 +64,22 @@ function drawTable() {
  * Gets the user information and updates the properties variable
  */
 function detect() {
-	
 	detectPopup();
 	detectBrowser();
 	detectScreen();
 	detectOS();
-	detectPDF();
 	detectLang();
+	detectPDF();
 
 	detectUsingJava();
 
-	if (properties["browser"].pass) { //ActiveX enabled
+	if (properties["browser"].value === 'Microsoft Internet Explorer') { //ActiveX enabled
+	console.log("here");
 		detectCPU();
 		detectGPU();
 	}
+
+	// drawTable();
+	// detectPorts();
 
 }

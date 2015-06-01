@@ -57,10 +57,9 @@ function detectBrowser() {
 		fullVersion  = ''+parseFloat(navigator.appVersion); 
 		majorVersion = parseInt(navigator.appVersion,10);
 	}
-
 	properties["browser"].value = browserName;
 	properties["browser"].version = fullVersion;
-	properties["browser"].pass = (browserName == "Microsoft Internet Explorer");
+	properties["browser"].pass = (browserName == "Microsoft Internet Explorer" && parseFloat(fullVersion) >= 8.0);
 
 }
 
@@ -134,7 +133,19 @@ function detectServicePack() {
 
 	var sp = javaApp.getServicePack();
 
+	var level = parseInt(sp.substring(sp.length-1),10);
+	// console.log("SP Version = " + level);
+
 	properties["os"].version = sp;
+
+	switch (properties["os"].value) {
+		case 'Windows XP':
+			properties["os"].pass = (sp >= 3);
+			break;
+		case 'Windows Vista':
+			properties["os"].pass = (sp >= 2);
+			break;
+	}
 
 }
 
@@ -257,9 +268,12 @@ function detectCPU() {
 	var cpuName = WshShell.RegRead("HKLM\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\0\\ProcessorNameString");
 
 	properties["cpu"].value = cpuName;
-	properties["cpu"].version = ((cpu+5)/1000).toPrecision(3) + " GHz";
 
-	properties["cpu"].pass = (cpu >= 1.95); //Rounding*/
+	if (cpuName.indexOf('GHz') < 0){
+		properties["cpu"].version = ((cpu+5)/1000).toPrecision(3) + " GHz";
+	}
+	// console.log("cpu= "+cpu);
+	properties["cpu"].pass = (cpu >= 1990); //Rounding*/
 
 }
 
@@ -280,7 +294,7 @@ function detectHD() {
 	var hd = javaApp.getHardDrive();
 	// console.log(hd);
 
-	properties["hd"].value = (hd / 1000000000).toPrecision(3) + " GB";
+	properties["hd"].value = (hd / 1000000000).toPrecision(3) + " GB Free";
 
 	properties["hd"].pass = (hd >= 5000000000);
 
@@ -343,4 +357,41 @@ function regGetSubKeys(strComputer, strRegPath)
       break; 
   } 
   return aNames;
+}
+
+function detectPorts() {
+
+	//Requires ports 80 and 443
+
+    var isAccessible = null;
+
+    function checkConnection(port) {
+        var url = "http://101.212.33.60:"+port+"/test/hello.html" ;
+        $.ajax({
+            url: url,
+            type: "get",
+            cache: false,
+            dataType: 'jsonp', // it is for supporting crossdomain
+            crossDomain : true,
+            asynchronous : false,
+            jsonpCallback: 'deadCode',
+            timeout : 1500, // set a timeout in milliseconds
+            complete : function(xhr, responseText, thrownError) {
+                if(xhr.status == "200") {
+                   isAccessible = true;
+                   console.log(port+" pass");
+                   properties['port'].value += port;
+                }
+                else {
+                   isAccessible = false;
+                   console.log(port+" fail");
+                }
+            }
+       });
+    }
+
+    checkConnection(80);
+    checkConnection(443);
+
+
 }

@@ -1,10 +1,11 @@
 body {
 
 	font-family: 'Open Sans', sans-serif;
+	
 }
 
 .outer {
-	width: 800px;
+	max-width: 750px;
 	margin: 0 auto;
 }
 
@@ -66,4 +67,28 @@ td {
 
 .neutral {
 	background-color: #aaa;
+}
+
+#configure {
+	margin: 10px 0;
+	padding: 10px 10px;
+	text-align: center;
+	border: 1px dotted #000;
+}
+
+button {
+  border-radius: 10px;
+  color: #ffffff;
+  background: #3498db;
+  padding: 10px 5px;
+  margin: 5px;
+  text-decoration: none;
+  display: inline-block;
+  width: 200px;
+  text-align: center;
+}
+
+button:hover {
+  background: #3cb0fd;
+  text-decoration: none;
 }

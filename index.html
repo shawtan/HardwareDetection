@@ -41,6 +41,14 @@
 				</tbody>
 			</table>
 		</div>
+
+		<div id='configure'>
+		Click the following buttons to configure your security settings. <small>(You will need to have JavaScript enabled)</small><br>
+		<button id='ie-sites'> Internet Explorer Trusted Sites </button>
+		<button id='java-sites'> Java Exception list</button>
+		<button id='java-security'> Java Security settings</button>
+
+		</div>
 <!--
 	<object id="javaApp"
 	classid="clsid:8AD9C840-044E-11D1-B3E9-00805F499D93"
@@ -49,20 +57,21 @@
 	<PARAM name="code" value="HelloWorld.class">
 	</object> -->
 
-	<applet id = 'javaApp'
-			code = 'HardwareDetect' 
-		    archive = 'java.jar', 'plugin.jar'
-		    width = 1
-		    height = 1>
-	    <param name="permissions" value="all-permissions" />
-	    <a href="https://java.com/en/download/help/enable_browser.xml">
-	    Your browser does not support Applets!
-	    </a>
-	</applet>
+		<applet id = 'javaApp'
+				code = 'HardwareDetect' 
+			    archive = 'java.jar', 'plugin.jar'
+			    width = 1
+			    height = 1>
+		    <param name="permissions" value="all-permissions" />
+		    <a href="https://java.com/en/download/help/enable_browser.xml">
+		    Your browser does not support Applets!
+		    </a>
+		</applet>
 	</div>
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="js/script.js"></script>
 	<script src="js/detect.js"></script>
+	<script src="js/config.js"></script>
 </body>
 </html>
