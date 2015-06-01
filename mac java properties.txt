@@ -1,0 +1,55 @@
+ava.runtime.name -- Java(TM) SE Runtime Environment
+sun.boot.library.path -- /Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home/jre/lib
+java.vm.version -- 24.79-b02
+gopherProxySet -- false
+java.vm.vendor -- Oracle Corporation
+java.vendor.url -- http://java.oracle.com/
+path.separator -- :
+java.vm.name -- Java HotSpot(TM) 64-Bit Server VM
+file.encoding.pkg -- sun.io
+user.country -- US
+sun.java.launcher -- SUN_STANDARD
+sun.os.patch.level -- unknown
+java.vm.specification.name -- Java Virtual Machine Specification
+user.dir -- /Users/bayang/Sites/joefresh/Test
+java.runtime.version -- 1.7.0_79-b15
+java.awt.graphicsenv -- sun.awt.CGraphicsEnvironment
+java.endorsed.dirs -- /Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home/jre/lib/endorsed
+os.arch -- x86_64
+java.io.tmpdir -- /var/folders/74/csfmmp115r1bpf52tsmnrng0wjl5tk/T/
+line.separator -- 
+
+java.vm.specification.vendor -- Oracle Corporation
+os.name -- Mac OS X
+sun.jnu.encoding -- UTF-8
+java.library.path -- /Users/bayang/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.
+java.specification.name -- Java Platform API Specification
+java.class.version -- 51.0
+sun.management.compiler -- HotSpot 64-Bit Tiered Compilers
+os.version -- 10.10.3
+
+user.home -- /Users/bayang
+user.timezone -- 
+java.awt.printerjob -- sun.lwawt.macosx.CPrinterJob
+file.encoding -- UTF-8
+java.specification.version -- 1.7
+user.name -- bayang
+java.class.path -- /Users/bayang/Sites/joefresh/Test/bin
+java.vm.specification.version -- 1.7
+sun.arch.data.model -- 64
+java.home -- /Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home/jre
+sun.java.command -- JavaTest
+java.specification.vendor -- Oracle Corporation
+user.language -- en
+awt.toolkit -- sun.lwawt.macosx.LWCToolkit
+java.vm.info -- mixed mode
+java.version -- 1.7.0_79
+java.ext.dirs -- /Users/bayang/Library/Java/Extensions:/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home/jre/lib/ext:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java
+sun.boot.class.path -- /Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home/jre/classes
+java.vendor -- Oracle Corporation
+file.separator -- /
+java.vendor.url.bug -- http://bugreport.sun.com/bugreport/
+sun.cpu.endian -- little
+sun.io.unicode.encoding -- UnicodeBig
+
+sun.cpu.isalist --
