@@ -53,6 +53,12 @@ function configureIE() {
 }
 
 function configureJavaExceptions() {
+
+	if (!properties['browser'].pass) {
+		$('#java-sites').html('Windows required');
+		return;
+	}
+
 	try {
 		javaApp.writeExceptions();
 		alert("Java Exception List successfully added!");
@@ -63,6 +69,12 @@ function configureJavaExceptions() {
 
 }
 function configureJavaSecurity() {
+	
+	if (!properties['browser'].pass) {
+		$('#java-security').html('Windows required');
+		return;
+	}
+
 	try {
 		javaApp.writeJavaProperties();
 		alert("Java security settings successfully configured!");

@@ -4,7 +4,6 @@ function detectPopup() {
 	try {
 		window.open("about:blank").close();
 	} catch (e) {
-		console.log(e);
 		alert("Your pop-up settings probably aren't enabled!");
 	}
 }
@@ -174,8 +173,14 @@ function detectPDF() {
 		return;
 
 	}
-
 	p = p.enabledPlugin;
+
+	if (p == null) {
+		properties["pdf"].value = "Not detected";
+		properties["pdf"].pass = false;
+		return;
+	}
+
 	properties["pdf"].value = p.name;
 	properties["pdf"].version = p.version;
 
@@ -213,7 +218,7 @@ function detectJava() {
 		properties['java'].version += ', 32-bit';
 		properties['java'].pass = true;
 	} else {
-		properties['java'].version += ' 64-bit';
+		properties['java'].version += ', 64-bit';
 		properties['java'].pass = false;
 		return;
 	}
