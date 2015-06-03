@@ -39,6 +39,8 @@ $( document ).ready( function() {
 	$('#java-sites').click(configureJavaExceptions);
 	$('#java-security').click(configureJavaSecurity);
 
+	javaApp.onLoad(detectUsingJava);
+
 } );
 
 /*
@@ -74,10 +76,9 @@ function detect() {
 	detectLang();
 	detectPDF();
 
-	detectUsingJava();
+	// detectUsingJava();
 
 	if (properties["browser"].value === 'Microsoft Internet Explorer') { //ActiveX enabled
-	console.log("here");
 		detectCPU();
 		detectGPU();
 	}

@@ -244,6 +244,7 @@ function detectJava() {
 } 
 
 function detectUsingJava() {
+
 	if (navigator.javaEnabled()){
 
 		try {
@@ -268,6 +269,8 @@ function detectUsingJava() {
 		properties['java'].value = "Not Enabled";
 		properties['java'].pass = false;
 	}
+
+	drawTable();
 
 }
 
