@@ -49,11 +49,14 @@
 
 		<div id='configure'>
 		Click the following buttons to configure your security settings. <small>(You will need to have JavaScript enabled)</small><br>
-		<button id='ie-sites'> Internet Explorer Trusted Sites </button>
-		<button id='java-sites'> Java Exception list</button>
-		<button id='java-security'> Java Security settings</button>
+		<button id='ie-sites'>Internet Explorer Trusted Sites </button>
+		<button id='java-sites'>Java Exception list</button>
+		<button id='java-security'>Java Security settings</button>
+		<button id='ie-shortcut'>Create Shortcut</button>
+		<button id='printer'>Test Printer</button>
 
 		</div>
+	<script src="https://www.java.com/js/deployJava.js"></script>
 <!--
 	<object id="javaApp"
 	classid="clsid:8AD9C840-044E-11D1-B3E9-00805F499D93"
@@ -62,7 +65,7 @@
 	<PARAM name="code" value="HelloWorld.class">
 	</object> -->
 
-		<applet id = 'javaApp'
+		<!-- <applet id = 'javaApp'
 				code = 'HardwareDetect' 
 			    archive = 'java.jar', 'plugin.jar'
 			    width = 1
@@ -72,12 +75,13 @@
 		    <a href="https://java.com/en/download/help/enable_browser.xml">
 		    Your browser does not support Applets!
 		    </a>
-		</applet>
+		</applet> -->
 	</div>
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="js/script.js"></script>
 	<script src="js/detect.js"></script>
 	<script src="js/config.js"></script>
+	<script src="js/bowser.min.js"></script>
 </body>
 </html>

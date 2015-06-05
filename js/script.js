@@ -1,5 +1,5 @@
 $( document ).ready( function() { 
-	
+	var javaApp;
 	// The requirements, and what software/hardware the user has
 	properties = {"js":{str:"JavaScript", req:"Enabled", value:"Enabled", version:null, pass:true, url:"https://support.microsoft.com/en-ca/gp/howtoscript"},
 		"java":{str:"Java", req:"1.7.71+, 32-bit", value:"Unknown", version:null, pass:null, url:"https://java.com/en/download/"},
@@ -10,9 +10,9 @@ $( document ).ready( function() {
 		"ram":{str:"RAM", req:"2+ GB", value:"Unknown", version:null, pass:null, url:null},
 		"hd":{str:"Hard Drive", req:"5+ GB available", value:"Unknown", version:null, pass:null, url:null},
 		"gpu":{str:"Video Card", req:"Intel 945/965, ATL Radeon R300 (9xxx), Nvidia Geforce FX (5xxx), OpenGL 1.5", value:"Unknown", version:null, pass:null, url:"http://www.videocardbenchmark.net/gpu_list.php"},
+		"speed":{str:"Internet Speed", req:"128 kb/s or higher", value:"Unknown", version:null, pass:null, url:null},
 		"pdf":{str:"PDF Reader", req:"Adobe Reader 9.0+", value:"Unknown", version:null, pass:null, url:"https://get.adobe.com/reader/"},
 		"lang":{str:"Language", req:"English (CA)", value:"Unknown", version:null, pass:null, url:"http://windows.microsoft.com/en-ca/windows-vista/change-your-internet-explorer-language-settings"}};
-
 
 	drawTable();
 	detect();
@@ -25,6 +25,8 @@ $( document ).ready( function() {
 			return;
 		} else if (properties[id].pass) {
 			return;
+		} else if (id = 'java') {
+			deployJava.installLatestJRE();
 		} else if (properties[id].url != null ){
 			window.open(properties[id].url);
 		} else {
@@ -32,15 +34,15 @@ $( document ).ready( function() {
 		}
 	});
 
-	// console.log(properties);
-
-
 	$('#ie-sites').click(configureIE);
 	$('#java-sites').click(configureJavaExceptions);
 	$('#java-security').click(configureJavaSecurity);
+	$('#ie-shortcut').click(createShortcut);
+	$('#printer').click(function() {window.print()});
 
-	javaApp.onLoad(detectUsingJava);
+	// javaApp.onLoad(detectUsingJava);
 
+	makeFile();
 } );
 
 /*
@@ -75,13 +77,21 @@ function detect() {
 	detectOS();
 	detectLang();
 	detectPDF();
+	detectJava();
+
+	detectSpeed();
 
 	// detectUsingJava();
 
-	if (properties["browser"].value === 'Microsoft Internet Explorer') { //ActiveX enabled
+	// if (properties["browser"].value === 'Microsoft Internet Explorer') { //ActiveX enabled
+	if ("ActiveXObject" in window) {
+		detectHD();
+		detectRAM();
+		detectServicePack();
 		detectCPU();
 		detectGPU();
 	}
+	// }
 	// } catch  (e) {
 	// 	console.log(e);
 	// }

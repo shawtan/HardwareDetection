@@ -45,8 +45,6 @@ function configureIE() {
 		errorFree = false;
 	}
 
-	oWSS = null;
-
 	if (errorFree){
 		alert("IE trusted sites successfully added!");
 	}
@@ -54,33 +52,134 @@ function configureIE() {
 
 function configureJavaExceptions() {
 
+	var sites = ["https://platform.audatex.com/bre",
+	"https://cloud.audatex.ca",
+	"https://platform.audatex.ca",
+	"https://www.apusolutions.com",
+	"https://adpclaims.com",
+	"https://adpclaims.net",
+	"https://audatexsolutions.com",
+	"https://*.audatex.ca"];
+
 	if (!properties['browser'].pass) {
-		$('#java-sites').html('Windows required');
+		$('#java-sites').html('IE required');
+		return;
+	}
+
+	if (!properties['java'].pass) {
+		$('#java-sites').html('Java required');
 		return;
 	}
 
 	try {
-		javaApp.writeExceptions();
-		alert("Java Exception List successfully added!");
+		var wshshell = new ActiveXObject("WScript.Shell");
+		var dir = wshshell.SpecialFolders("Desktop");
+		dir = dir.substring(0,dir.length - "Desktop".length);
+		dir += "\\AppData\\LocalLow\\Sun\\Java\\Deployment\\security\\exception.sites";
+
+		var fso = new ActiveXObject("Scripting.FileSystemObject");
+		var file = fso.OpenTextFile(dir, 8);
+
+		for (var i=0; i<sites.length; i++){
+			file.WriteLine(sites[i]);
+		}
+
+		file.close();
+
+		alert("Java exception list successfully added!");
+
 	} catch(e) {
-		$('#java-sites').html('You need to allow Java to run!');
-		// console.log(e);
+		alert("An error occured");
 	}
 
 }
 function configureJavaSecurity() {
 	
+	var p = ["deployment.security.level=HIGH",
+	"deployment.security.level=MEDIUM",
+	"deployment.webjava.enabled=true",
+	"deployment.security.askgrantdialog.show=true",
+	"deployment.security.askgrantdialog.notinca=true",
+	"deployment.security.sandbox.jnlp.enhanced=true",
+	"deployment.security.sandbox.selfsigned=PROMPT",
+	"deployment.security.sandbox.casigned=PROMPT",
+	//"deployment.user.security.exception.site=%APPDATA%\\\\..\\\\LocalLow\\\\Sun\\\\Java\\\\Deployment\\\\security\\\\exception.sites",
+	"deployment.security.SSLv2Hello=false",
+	"deployment.security.TLSv1=true",
+	"deployment.security.TLSv1.1=false",
+	"deployment.security.TLSv1.2=false"];
+
+
 	if (!properties['browser'].pass) {
-		$('#java-security').html('Windows required');
+		$('#java-securirt').html('IE required');
 		return;
 	}
 
+	if (!properties['java'].pass) {
+		$('#java-security').html('Java required');
+		return;
+	}
 	try {
-		javaApp.writeJavaProperties();
+		var wshshell = new ActiveXObject("WScript.Shell");
+		var dir = wshshell.SpecialFolders("Desktop");
+		dir = dir.substring(0,dir.length - "Desktop".length);
+		dir += "\\AppData\\LocalLow\\Sun\\Java\\Deployment\\deployment.properties";
+
+		var fso = new ActiveXObject("Scripting.FileSystemObject");
+		var file = fso.OpenTextFile(dir, 8);
+
+		for (var i=0; i<p.length; i++){
+			file.WriteLine(p[i]);
+		}
+
+		file.close();
 		alert("Java security settings successfully configured!");
+
 	} catch(e) {
-		$('#java-security').html('You need to allow Java to run!');
-		// console.log(e);
+		alert("An error occured");
+	}
+
+
+}
+
+
+function createShortcut() {
+
+	try {
+		var wshshell = new ActiveXObject("WScript.Shell");
+		var specDir = wshshell.SpecialFolders("Desktop");
+		var shortcut = wshshell.CreateShortcut(specDir + "\\Audatex.lnk");
+		shortcut.TargetPath = "C:\\Program Files\\Internet Explorer\\iexplore.exe";
+		shortcut.Arguments = "http://platform.audatex.ca";
+		shortcut.Save();
+		alert("Shortcut creation successful!");
+	} catch (err) {
+		console.log(err);
+		console.log("Shortcut failed");
+		alert("Failed to create shortcut");
 	}
 
 }
+
+function makeFile(){
+
+
+// var loc = new ActiveXObject("WbemScripting.SWbemLocator");
+// var svc = loc.ConnectServer(".", "root\\cimv2");
+// coll = svc.ExecQuery("select * from Win32_OperatingSystem");
+// var items = new Enumerator(coll);
+
+// while (!items.atEnd())
+// {
+//    console.log(items.item().ServicePackMajorVersion);
+//    console.log(items.item().ServicePackMinorVersion);
+//     items.moveNext();
+// }
+    // }
+/*
+    file = fso.OpenTextFile("")
+
+    thefile=fso.CreateTextFile("C:\\Git\\MyFile.txt",true);
+
+    thefile.close()*/
+ }

@@ -9,62 +9,10 @@ function detectPopup() {
 }
 
 function detectBrowser() {
-	var nAgt = navigator.userAgent;
 
-	// In Opera, the true version is after "Opera" or after "Version"
-	if ((verOffset=nAgt.indexOf("Opera"))!=-1) {
-		browserName = "Opera";
-		fullVersion = nAgt.substring(verOffset+6);
-		if ((verOffset=nAgt.indexOf("Version"))!=-1) 
-			fullVersion = nAgt.substring(verOffset+8);
-	}
-	// In MSIE, the true version is after "MSIE" in userAgent
-	else if ((verOffset=nAgt.indexOf("MSIE"))!=-1) {
-		browserName = "Microsoft Internet Explorer";
-		fullVersion = nAgt.substring(verOffset+5);
-	}
-	// In Chrome, the true version is after "Chrome" 
-	else if ((verOffset=nAgt.indexOf("Chrome"))!=-1) {
-		browserName = "Chrome";
-		fullVersion = nAgt.substring(verOffset+7);
-	}
-	// In Safari, the true version is after "Safari" or after "Version" 
-	else if ((verOffset=nAgt.indexOf("Safari"))!=-1) {
-		browserName = "Safari";
-		fullVersion = nAgt.substring(verOffset+7);
-		if ((verOffset=nAgt.indexOf("Version"))!=-1) 
-			fullVersion = nAgt.substring(verOffset+8);
-	}
-	// In Firefox, the true version is after "Firefox" 
-	else if ((verOffset=nAgt.indexOf("Firefox"))!=-1) {
-		browserName = "Firefox";
-		fullVersion = nAgt.substring(verOffset+8);
-	}
-	// In most other browsers, "name/version" is at the end of userAgent 
-	else if ( (nameOffset=nAgt.lastIndexOf(' ')+1) < 
-		(verOffset=nAgt.lastIndexOf('/')) ) 
-	{
-		browserName = nAgt.substring(nameOffset,verOffset);
-		fullVersion = nAgt.substring(verOffset+1);
-		if (browserName.toLowerCase()==browserName.toUpperCase()) {
-			browserName = navigator.appName;
-		}
-	}
-		// trim the fullVersion string at semicolon/space if present
-	if ((ix=fullVersion.indexOf(";"))!=-1)
-		fullVersion=fullVersion.substring(0,ix);
-	if ((ix=fullVersion.indexOf(" "))!=-1)
-		fullVersion=fullVersion.substring(0,ix);
-
-	majorVersion = parseInt(''+fullVersion,10);
-	if (isNaN(majorVersion)) {
-		fullVersion  = ''+parseFloat(navigator.appVersion); 
-		majorVersion = parseInt(navigator.appVersion,10);
-	}
-	properties["browser"].value = browserName;
-	properties["browser"].version = fullVersion;
-	properties["browser"].pass = (browserName == "Microsoft Internet Explorer" && parseFloat(fullVersion) >= 8.0);
-
+	properties["browser"].value = bowser.name;
+	properties["browser"].version = bowser.version;
+	properties["browser"].pass = (bowser.msie !== undefined && parseFloat(bowser.version) >= 8.0);
 }
 
 function detectScreen() {
@@ -131,16 +79,23 @@ function detectOS() {
 		}
 	}
 	properties["os"].pass = false;
+
 }
 
 function detectServicePack() {
 
-	var sp = javaApp.getServicePack();
+	// var sp = javaApp.getServicePack();
 
-	var level = parseInt(sp.substring(sp.length-1),10);
-	// console.log("SP Version = " + level);
+	var loc = new ActiveXObject("WbemScripting.SWbemLocator");
+	var svc = loc.ConnectServer(".", "root\\cimv2");
+	coll = svc.ExecQuery("select * from Win32_OperatingSystem");
+	var items = new Enumerator(coll);
 
-	properties["os"].version = sp;
+	var sp = items.item().ServicePackMajorVersion;
+
+	if (sp > 0){
+		properties["os"].version = "Service Pack " + sp;
+	}
 
 	switch (properties["os"].value) {
 		case 'Windows XP':
@@ -199,12 +154,21 @@ function detectLang() {
 	properties["lang"].value = lang;
 	properties["lang"].pass = (lang == 'en-CA');
 	
-
 }
 
 function detectJava() {
 // Requires 1.7.0_71 or above, 32-bit
-	var v = javaApp.getJRE();
+// 'Java(TM)'
+
+	if (!navigator.javaEnabled()) {
+
+		properties['java'].value = "Not Enabled";
+		properties['java'].pass = false;
+		return;
+	}
+
+	// var v = javaApp.getJRE();
+	var v = deployJava.getJREs()[0];
 
 	properties["java"].value = "Enabled";
 	properties['java'].version = v;
@@ -212,16 +176,16 @@ function detectJava() {
 	v = v.substring(v.indexOf('.')+1);
 	var major = parseInt(v,10);
 
-	var arch = javaApp.getBit();
+	// var arch = javaApp.getBit();
 
-	if (arch.indexOf("64")<0){
-		properties['java'].version += ', 32-bit';
-		properties['java'].pass = true;
-	} else {
-		properties['java'].version += ', 64-bit';
-		properties['java'].pass = false;
-		return;
-	}
+	// if (arch.indexOf("64")<0){
+	// 	properties['java'].version += ', 32-bit';
+	// 	properties['java'].pass = true;
+	// } else {
+	// 	properties['java'].version += ', 64-bit';
+	// 	properties['java'].pass = false;
+	// 	return;
+	// }
 
 	if (major > 7) {
 		properties['java'].pass = true;
@@ -293,9 +257,17 @@ function detectCPU() {
 
 function detectRAM() {
 
-	var ram = javaApp.getRAM();
+	// var ram = javaApp.getRAM();
 
-	properties["ram"].value = (ram / 1073741824 ).toPrecision(3) + " GB";
+	var loc = new ActiveXObject("WbemScripting.SWbemLocator");
+	var svc = loc.ConnectServer(".", "root\\cimv2");
+	coll = svc.ExecQuery("select * from Win32_ComputerSystem");
+	var items = new Enumerator(coll);
+
+	var ram = items.item().TotalPhysicalMemory;
+
+
+	properties["ram"].value = (ram / 1073741824 ).toFixed(1) + " GB";
 
 	properties["ram"].pass = (ram >= 2147483648);	//2^30
 
@@ -304,14 +276,21 @@ function detectRAM() {
 
 function detectHD() {
 
-	var hd = javaApp.getHardDrive();
+	fso = new ActiveXObject("Scripting.FileSystemObject");
+
+	var d = fso.getDrive(fso.getDriveName("C:\\"));
+
+	var hd =  d.AvailableSpace;
+	var total = d.TotalSize;
+
+	// var hd = javaApp.getHardDrive();
 	// console.log(hd);
 
-	properties["hd"].value = (hd / 1000000000).toPrecision(3) + " GB Free";
+	properties["hd"].value = (hd / 1000000000).toPrecision(3) + " GB Available";
 
 	properties["hd"].pass = (hd >= 5000000000);
 
-	var total = javaApp.getHardDriveTotal();
+	// var total = javaApp.getHardDriveTotal();
 	properties["hd"].version = (total / 1000000000).toPrecision(3) + " GB Hard Drive"
 
 }
@@ -405,6 +384,62 @@ function detectPorts() {
 
     checkConnection(80);
     checkConnection(443);
+}
 
+function detectSpeed() {
+	// Thank you stack overflow
+
+	properties['speed'].value = "Starting speed test... Please wait";
+
+	var startTime, endTime; 
+	var download = new Image();
+	download.onload = function() {
+		endTime = (new Date()).getTime();
+		calculateSpeed();
+	}
+
+	download.onerror = function (err, msg) {
+        properties['speed'].value = "Speed test failed. Try using another speed test.";
+    }
+
+	startTime = (new Date()).getTime();
+	var cacheBuster = "?nnn="+startTime;
+
+	download.src = "test.jpg"+cacheBuster;
+	// download.src = "http://www.kenrockwell.com/contax/images/g2/examples/31120037-5mb.jpg"+cacheBuster;
+
+	setTimeout(function () {
+		if (!endTime){
+			properties['speed'].value = "Too slow";
+			properties['speed'].pass = false;
+			drawTable();
+		}
+	}, 20000);
+
+	function calculateSpeed() {
+		var duration = (endTime - startTime) /1000;
+		var size = 200 * 1000 * 8;
+		// var size = 4995374 * 1000 * 8;
+
+
+		var speed = (size/duration);
+
+		var speedValue;
+
+		if (speed > 1000000000) {
+			speedValue = (speed/1000000000).toFixed(2) + "Gb/s";
+		} else if (speed > 1000000) {
+			speedValue = (speed/1000000).toFixed(2) + "Mb/s";
+		} else if (speed > 1000) {
+			speedValue = (speed/1000).toFixed(2) + "kb/s";
+		} else {
+			speedValue = speed.toFixed(2) + "b/s"
+		}
+		properties['speed'].value = speedValue;
+
+		properties['speed'].pass = (speed > 128*1000);
+
+		drawTable();
+	}
 
 }
