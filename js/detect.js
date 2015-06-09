@@ -8,6 +8,10 @@ function detectPopup() {
 	}
 }
 
+/*
+* Determine if the browser used passes
+* Requirement: IE 8.0+
+*/
 function detectBrowser() {
 
 	properties["browser"].value = bowser.name;
@@ -15,6 +19,9 @@ function detectBrowser() {
 	properties["browser"].pass = (bowser.msie !== undefined && parseFloat(bowser.version) >= 8.0);
 }
 
+/*
+* Requirement: At least 1280x800 Colour monitor
+*/
 function detectScreen() {
 	var screenW = 640, screenH = 480;
 	if (parseInt(navigator.appVersion,10)>3) {
@@ -23,8 +30,7 @@ function detectScreen() {
 	}
 	else if (navigator.appName == "Netscape" 
 		&& parseInt(navigator.appVersion,10)==3
-		&& navigator.javaEnabled()
-		) 
+		&& navigator.javaEnabled()) 
 	{
 		var jToolkit = java.awt.Toolkit.getDefaultToolkit();
 		var jScreenSize = jToolkit.getScreenSize();
@@ -39,7 +45,10 @@ function detectScreen() {
 	properties['screen'].pass = (screenW >= 1280 && screenH >= 800);
 }
 
-
+/*
+*	Detects the operating system the system is running on
+*	Requirement: Windows (XP or newer)
+*/
 function detectOS() {
 	var os = 'unknown';
 	var clientStrings = [
@@ -88,7 +97,7 @@ function detectServicePack() {
 
 	var loc = new ActiveXObject("WbemScripting.SWbemLocator");
 	var svc = loc.ConnectServer(".", "root\\cimv2");
-	coll = svc.ExecQuery("select * from Win32_OperatingSystem");
+	var coll = svc.ExecQuery("select * from Win32_OperatingSystem");
 	var items = new Enumerator(coll);
 
 	var sp = items.item().ServicePackMajorVersion;
@@ -150,12 +159,16 @@ function detectPDF() {
 function detectLang() {
 
 	var lang = navigator.userLanguage || navigator.language;
-	
 	properties["lang"].value = lang;
-	properties["lang"].pass = (lang == 'en-CA');
+
+	lang = lang.toLowerCase();
+	properties["lang"].pass = (lang == 'en-ca' || lang == 'fr-ca');
 	
 }
 
+/*
+* Requirement: Java 1.7.0_71 or above, 32-bit
+*/
 function detectJava() {
 // Requires 1.7.0_71 or above, 32-bit
 // 'Java(TM)'
@@ -207,6 +220,7 @@ function detectJava() {
 	}
 } 
 
+/* Should not be used
 function detectUsingJava() {
 
 	if (navigator.javaEnabled()){
@@ -237,6 +251,7 @@ function detectUsingJava() {
 	drawTable();
 
 }
+*/
 
 function detectCPU() {
 
@@ -261,11 +276,10 @@ function detectRAM() {
 
 	var loc = new ActiveXObject("WbemScripting.SWbemLocator");
 	var svc = loc.ConnectServer(".", "root\\cimv2");
-	coll = svc.ExecQuery("select * from Win32_ComputerSystem");
+	var coll = svc.ExecQuery("select * from Win32_ComputerSystem");
 	var items = new Enumerator(coll);
 
 	var ram = items.item().TotalPhysicalMemory;
-
 
 	properties["ram"].value = (ram / 1073741824 ).toFixed(1) + " GB";
 
@@ -276,7 +290,7 @@ function detectRAM() {
 
 function detectHD() {
 
-	fso = new ActiveXObject("Scripting.FileSystemObject");
+	var fso = new ActiveXObject("Scripting.FileSystemObject");
 
 	var d = fso.getDrive(fso.getDriveName("C:\\"));
 
@@ -386,28 +400,38 @@ function detectPorts() {
     checkConnection(443);
 }
 
+/*
+* Detect the internet speed of the user, and whether it passes requirements
+* Requirement: 128kb/s or faster
+*/
 function detectSpeed() {
 	// Thank you stack overflow
 
-	properties['speed'].value = "Starting speed test... Please wait";
+	// Link of image to download 
+	// -- Maybe using an image hosted on own servers instead of Imgur would be better
+	var link = "http://i.imgur.com/1jHN365.jpg";
+	// Size of image in bits
+	var size = 197294*8;
+
 
 	var startTime, endTime; 
 	var download = new Image();
+
 	download.onload = function() {
 		endTime = (new Date()).getTime();
 		calculateSpeed();
 	}
 
 	download.onerror = function (err, msg) {
-        properties['speed'].value = "Speed test failed. Try using another speed test.";
+        properties['speed'].value = "Failed to determine internet speed. Try using another speed test.";
     }
 
 	startTime = (new Date()).getTime();
 	var cacheBuster = "?nnn="+startTime;
 
-	download.src = "test.jpg"+cacheBuster;
-	// download.src = "http://www.kenrockwell.com/contax/images/g2/examples/31120037-5mb.jpg"+cacheBuster;
+	download.src = link + cacheBuster;
 
+	// If the image didn't load within 20s, the internet's probably too slow.
 	setTimeout(function () {
 		if (!endTime){
 			properties['speed'].value = "Too slow";
@@ -416,30 +440,34 @@ function detectSpeed() {
 		}
 	}, 20000);
 
+	// Calculate the internet speed based on time elapsed and size of file
 	function calculateSpeed() {
-		var duration = (endTime - startTime) /1000;
-		var size = 200 * 1000 * 8;
-		// var size = 4995374 * 1000 * 8;
 
+		// Time taking in seconds
+		var duration = (endTime - startTime) /1000;		
 
-		var speed = (size/duration);
+		// Data rate in bits per second
+		var speed = (size / duration);
 
-		var speedValue;
+		// console.log(speed + "b/s");
+		// speedValue = (speed/1000000000).toFixed(2) + "Gb/s";
+		// console.log((speed/1000000).toFixed(2) + "Mb/s");
 
-		if (speed > 1000000000) {
-			speedValue = (speed/1000000000).toFixed(2) + "Gb/s";
-		} else if (speed > 1000000) {
-			speedValue = (speed/1000000).toFixed(2) + "Mb/s";
-		} else if (speed > 1000) {
-			speedValue = (speed/1000).toFixed(2) + "kb/s";
-		} else {
-			speedValue = speed.toFixed(2) + "b/s"
+		if (speed > 500 * 1000) {	// Greater than 500kb/s
+			properties['speed'].value = "Fast";
+			properties['speed'].pass = true;
+		} else if (speed > 1000) {	// Units in kb/s
+			properties['speed'].value = (speed/1000).toFixed(2) + "kb/s";
+			properties['speed'].pass = (speed > 128*1000);
+		} else {					// Speed is in b/s ... that's really slow
+			properties['speed'].value = speed.toFixed(2) + "b/s"
+			properties['speed'].pass = false;
 		}
-		properties['speed'].value = speedValue;
-
-		properties['speed'].pass = (speed > 128*1000);
 
 		drawTable();
 	}
+
+	// Display an indicator that the test has started
+	properties['speed'].value = "Starting speed test... Please wait";
 
 }

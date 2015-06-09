@@ -1,7 +1,9 @@
 $( document ).ready( function() { 
-	var javaApp;
+
+	addButtons();
+
 	// The requirements, and what software/hardware the user has
-	properties = {"js":{str:"JavaScript", req:"Enabled", value:"Enabled", version:null, pass:true, url:"https://support.microsoft.com/en-ca/gp/howtoscript"},
+	properties = {"js":{str:"JavaScript", req:"Enabled", value:"Enabled", version:null, pass:true, url:"http://activatejavascript.org/en/instructions/ie"},
 		"java":{str:"Java", req:"1.7.71+, 32-bit", value:"Unknown", version:null, pass:null, url:"https://java.com/en/download/"},
 		"browser":{str:"Browser", req:"Internet Explorer 8.0+", value:"Unknown", version:null, pass:null, url:"http://windows.microsoft.com/en-ca/internet-explorer/download-ie"},
 		"screen":{str:"Screen Resolution", req:"1280x800 or better", value:"Unknown", version:null, pass:null, url:null},
@@ -45,6 +47,10 @@ $( document ).ready( function() {
 	makeFile();
 } );
 
+function addButtons() {
+	$('#configure').html("Click the following buttons to configure your security settings.<br><button id='ie-sites'>Internet Explorer Trusted Sites </button><button id='java-sites'>Java Exception list</button><button id='java-security'>Java Security settings</button><button id='ie-shortcut'>Create Shortcut</button><button id='printer'>Test Printer</button>");
+}
+
 /*
  * Populates the table based on the detected settings
  */
@@ -79,7 +85,6 @@ function detect() {
 	detectPDF();
 	detectJava();
 
-	detectSpeed();
 
 	// detectUsingJava();
 
@@ -91,6 +96,9 @@ function detect() {
 		detectCPU();
 		detectGPU();
 	}
+
+	
+	detectSpeed();
 	// }
 	// } catch  (e) {
 	// 	console.log(e);
