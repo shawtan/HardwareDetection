@@ -253,6 +253,19 @@ function detectUsingJava() {
 }
 */
 
+function detectActiveX() {
+
+
+	try {
+		new ActiveXObject('WScript.Shell');
+		return true;
+	} catch (e) {
+		console.log(e);
+		return false;
+	}
+
+}
+
 function detectCPU() {
 
 	var WshShell = new ActiveXObject("WScript.Shell");

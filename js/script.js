@@ -14,7 +14,7 @@ $( document ).ready( function() {
 		"gpu":{str:"Video Card", req:"Intel 945/965, ATL Radeon R300 (9xxx), Nvidia Geforce FX (5xxx), OpenGL 1.5", value:"Unknown", version:null, pass:null, url:"http://www.videocardbenchmark.net/gpu_list.php"},
 		"speed":{str:"Internet Speed", req:"128 kb/s or higher", value:"Unknown", version:null, pass:null, url:null},
 		"pdf":{str:"PDF Reader", req:"Adobe Reader 9.0+", value:"Unknown", version:null, pass:null, url:"https://get.adobe.com/reader/"},
-		"lang":{str:"Language", req:"English (CA)", value:"Unknown", version:null, pass:null, url:"http://windows.microsoft.com/en-ca/windows-vista/change-your-internet-explorer-language-settings"}};
+		"lang":{str:"Language", req:"Canadian English or French", value:"Unknown", version:null, pass:null, url:"http://windows.microsoft.com/en-ca/windows-vista/change-your-internet-explorer-language-settings"}};
 
 	drawTable();
 	detect();
@@ -89,7 +89,7 @@ function detect() {
 	// detectUsingJava();
 
 	// if (properties["browser"].value === 'Microsoft Internet Explorer') { //ActiveX enabled
-	if ("ActiveXObject" in window) {
+	if ("ActiveXObject" in window && detectActiveX()) {
 		detectHD();
 		detectRAM();
 		detectServicePack();
