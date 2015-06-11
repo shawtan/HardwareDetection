@@ -14,9 +14,20 @@ function detectPopup() {
 */
 function detectBrowser() {
 
-	properties["browser"].value = bowser.name;
-	properties["browser"].version = bowser.version;
-	properties["browser"].pass = (bowser.msie !== undefined && parseFloat(bowser.version) >= 8.0);
+	var userAgt = navigator.userAgent;
+	var i = userAgt.indexOf('Trident');
+	if (i >=0 ) {
+
+		properties["browser"].value = 'Internet Explorer';
+		properties["browser"].version = parseFloat(userAgt.substring(i+8),10) + 4;
+
+	} else { 
+
+		properties["browser"].value = bowser.name;
+		properties["browser"].version = bowser.version;
+	}
+	console.log(bowser.name);
+	properties["browser"].pass = (bowser.msie !== undefined && parseFloat(properties["browser"].version) >= 8.0);
 }
 
 /*
@@ -422,7 +433,7 @@ function detectSpeed() {
 
 	// Link of image to download 
 	// -- Maybe using an image hosted on own servers instead of Imgur would be better
-	var link = "http://i.imgur.com/1jHN365.jpg";
+	var link = "test.jpg";
 	// Size of image in bits
 	var size = 197294*8;
 
