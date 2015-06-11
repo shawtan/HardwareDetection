@@ -26,7 +26,7 @@ function detectBrowser() {
 		properties["browser"].value = bowser.name;
 		properties["browser"].version = bowser.version;
 	}
-	console.log(bowser.name);
+	
 	properties["browser"].pass = (bowser.msie !== undefined && parseFloat(properties["browser"].version) >= 8.0);
 }
 
@@ -133,20 +133,21 @@ function detectPDF() {
 	var p = navigator.mimeTypes["application/pdf"];
 	if (p == null) {
 
-		var o = new ActiveXObject('AcroPDF.PDF');
-		if (o == null) {
+		try {
+			var o = new ActiveXObject('AcroPDF.PDF');
+
+			var v = o.GetVersions();
+			var ver = parseFloat(v.substring(v.indexOf('=')+1));
+			properties["pdf"].value = 'Adobe Reader';
+			properties["pdf"].version = ver;
+			properties["pdf"].pass = (ver >= 9);
+			return;
+		} catch (e) {
+
 			properties["pdf"].value = "Not detected";
 			properties["pdf"].pass = false;
 			return;
 		}
-
-		var v = o.GetVersions();
-		var ver = parseFloat(v.substring(v.indexOf('=')+1));
-		properties["pdf"].value = 'Adobe Reader';
-		properties["pdf"].version = ver;
-		properties["pdf"].pass = (ver >= 9);
-		return;
-
 	}
 	p = p.enabledPlugin;
 
@@ -193,6 +194,12 @@ function detectJava() {
 
 	// var v = javaApp.getJRE();
 	var v = deployJava.getJREs()[0];
+
+	if (!v) {
+		properties['java'].value = "Not Enabled";
+		properties['java'].pass = false;
+		return;
+	}
 
 	properties["java"].value = "Enabled";
 	properties['java'].version = v;
