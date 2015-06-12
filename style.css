@@ -96,3 +96,8 @@ button:hover {
   background: #3cb0fd;
   text-decoration: none;
 }
+
+button.fail:hover {
+
+  background: #ff6a80;
+}

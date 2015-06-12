@@ -440,7 +440,8 @@ function detectSpeed() {
 
 	// Link of image to download 
 	// -- Maybe using an image hosted on own servers instead of Imgur would be better
-	var link = "test.jpg";
+	// var link = "test.jpg";
+	var link = "http://i.imgur.com/1jHN365.jpg";
 	// Size of image in bits
 	var size = 197294*8;
 

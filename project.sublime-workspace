@@ -1,0 +1,1119 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"scroll",
+				"scrollOptimize	(num)"
+			],
+			[
+				"can",
+				"canvas	(?)"
+			],
+			[
+				"tran",
+				"transition(e, i, r, s)"
+			],
+			[
+				"ini",
+				"initImageViewer"
+			],
+			[
+				"Image",
+				"ImageViewer"
+			],
+			[
+				"imageViewer",
+				"imageViewerResizer"
+			],
+			[
+				"servlet",
+				"servlet_url	(?)"
+			],
+			[
+				"type",
+				"typeof"
+			],
+			[
+				"on",
+				"on(events, selector?, data?, handler)"
+			],
+			[
+				"file-",
+				"file-item"
+			],
+			[
+				"remove",
+				"remove"
+			],
+			[
+				"file",
+				"file-item"
+			],
+			[
+				"backgr",
+				"background-color"
+			],
+			[
+				"no",
+				"nowrap"
+			],
+			[
+				"fu",
+				"function"
+			],
+			[
+				"Ty",
+				"dataType"
+			],
+			[
+				"action",
+				"actionType	(str)"
+			],
+			[
+				"progress",
+				"progress-list"
+			],
+			[
+				"pr",
+				"progress	(num)"
+			],
+			[
+				"max-",
+				"max-height"
+			],
+			[
+				"bl",
+				"block"
+			],
+			[
+				"has",
+				"hasClass(className)"
+			],
+			[
+				"un",
+				"unbind(eventType?, handler?)"
+			],
+			[
+				"te",
+				"text-transform"
+			],
+			[
+				"fon",
+				"font-size"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"border",
+				"border"
+			],
+			[
+				"ma",
+				"max-width"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"tex",
+				"text-align"
+			],
+			[
+				"li",
+				"line-height"
+			],
+			[
+				"out",
+				"outline"
+			],
+			[
+				"i",
+				"i	Tag"
+			],
+			[
+				"di",
+				"display"
+			],
+			[
+				"toggle",
+				"toggleClass(className)"
+			],
+			[
+				"files",
+				"files-module"
+			],
+			[
+				"add",
+				"addClass(className)"
+			],
+			[
+				"next",
+				"next_active	{}"
+			],
+			[
+				"remov",
+				"remove"
+			],
+			[
+				"att",
+				"attachment"
+			],
+			[
+				"contain",
+				"containment_right	[]"
+			],
+			[
+				"gallery",
+				"gallery_plugin"
+			],
+			[
+				"re",
+				"report_width"
+			],
+			[
+				"gal",
+				"gallery_width"
+			],
+			[
+				"inn",
+				"innerHeight"
+			],
+			[
+				"inner",
+				"innerWidth"
+			],
+			[
+				"info",
+				"info_width"
+			],
+			[
+				"ga",
+				"gallery_width"
+			],
+			[
+				"ui",
+				"ui-dialog"
+			],
+			[
+				"tex-",
+				"text-transform"
+			],
+			[
+				"size",
+				"size-title"
+			],
+			[
+				"report",
+				"report-iframe"
+			],
+			[
+				"error",
+				"error-message"
+			],
+			[
+				"input-error",
+				"input-error-message"
+			],
+			[
+				"blue",
+				"blue-light"
+			],
+			[
+				"button",
+				"button-add"
+			],
+			[
+				"F",
+				"FullScreenReview"
+			],
+			[
+				"ke",
+				"keyCode"
+			],
+			[
+				"Commen",
+				"commentsInit"
+			],
+			[
+				"rgb",
+				"rgba()"
+			],
+			[
+				"bac",
+				"background-color"
+			],
+			[
+				"backg",
+				"background-color"
+			],
+			[
+				"gre",
+				"font-grey"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
+				"reins",
+				"reinspection_dialog"
+			],
+			[
+				"background",
+				"background-color"
+			],
+			[
+				"pad",
+				"padding"
+			],
+			[
+				"l",
+				"li"
+			],
+			[
+				"google",
+				"googleMapStyle"
+			],
+			[
+				"imageOff",
+				"imageOffsetY"
+			],
+			[
+				"canva",
+				"canvasID"
+			],
+			[
+				"eleme",
+				"elementToFix"
+			],
+			[
+				"galler",
+				"gallery_plugin"
+			],
+			[
+				"Name",
+				"className"
+			],
+			[
+				"custom",
+				"customUiInit"
+			],
+			[
+				"appro",
+				"approve_dialog"
+			],
+			[
+				"fo",
+				"font-size"
+			],
+			[
+				"header",
+				"header-grey"
+			],
+			[
+				"op",
+				"option	Tag"
+			],
+			[
+				"co",
+				"comment-backgrounds"
+			],
+			[
+				"inline",
+				"inline-block"
+			],
+			[
+				"in",
+				"inline-block"
+			],
+			[
+				"acti",
+				"activePosition"
+			],
+			[
+				"active",
+				"active"
+			],
+			[
+				"SLIDE",
+				"SLIDE-RIGHT"
+			],
+			[
+				"padd",
+				"padding-top"
+			],
+			[
+				"mar",
+				"margin"
+			],
+			[
+				"canv",
+				"canvasID"
+			],
+			[
+				"key",
+				"keydown	.keydown()"
+			],
+			[
+				"list",
+				"list-style"
+			],
+			[
+				"margin",
+				"margin-bottom"
+			],
+			[
+				"list-style",
+				"list-style-type"
+			],
+			[
+				"max",
+				"max-width"
+			],
+			[
+				"utility",
+				"utility-user"
+			],
+			[
+				"weight",
+				"weight-regular"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 2238,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "style.css",
+			"settings":
+			{
+				"buffer_size": 1149,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/script.js",
+			"settings":
+			{
+				"buffer_size": 4225,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/detect.js",
+			"settings":
+			{
+				"buffer_size": 12963,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/config.js",
+			"settings":
+			{
+				"buffer_size": 4821,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"suble",
+				"Sublimerge"
+			],
+			[
+				"sublime",
+				"Sublimerge"
+			],
+			[
+				"diff",
+				"Git: Diff"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: in",
+				"Package Control: Install Package"
+			],
+			[
+				"packa",
+				"Package Control: List Packages"
+			],
+			[
+				"packag",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: di",
+				"Package Control: Discover Packages"
+			],
+			[
+				"package",
+				"Package Control: Remove Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"PACKAGE",
+				"Package Control: List Packages"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"isnta",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 416.0
+	},
+	"console":
+	{
+		"height": 145.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) ",
+			" import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) "
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/DVL29/AXN_CA_DVL_BRE_MAINT/Modules/XStatic/WebContent/scripts/rpui/rpui.js",
+		"/C/DVL29/AXN_CA_DVL_BRE_MAINT/Modules/XStatic/WebContent/scripts/rpui/claimexport.js",
+		"/C/DVL29/AXN_CA_DVL_BRE_MAINT/Modules/XStatic/WebContent/scripts/rpui/filebrowser.js",
+		"/C/DVL29/AXN_CA_DVL_BRE_MAINT/Modules/XStatic/WebContent/scripts/rpui/reviewmodule.js",
+		"/C/DVL29/AXN_CA_DVL_BRE_MAINT/Modules/XStatic/WebContent/scripts/rpui/vendor/selectize.min.js",
+		"/C/DVL29/AXN_CA_DVL_BRE_MAINT/Modules/XStatic/WebContent/scripts/rpui/imageviewer.js",
+		"/C/xampp/htdocs/review/js_back/reviewmodule.js",
+		"/P/AXN/Deployments/LoginPage/QA/Version_Apr2015/js/login.js",
+		"/C/xampp/htdocs/review/js/imageviewer.js",
+		"/P/AXN/Deployments/scripts/bre_oegvehicleidentification.js",
+		"/C/Users/Petr.Travnik/Desktop/test.js",
+		"/P/AXN/Deployments/scripts/selectize.min.js",
+		"/C/xampp/htdocs/review/scss/components/_gallery_plugin.scss",
+		"/C/DVL29/AXN_CA_DVL_BRE_MAINT/Modules/XStatic/WebContent/scripts/rpui/vendor/select.js",
+		"/C/DVL29/AXN_CA_DVL_BRE_MAINT/Modules/XStatic/WebContent/scripts/rpui/vendor/jquery.fileupload.js",
+		"/C/DVL29/AXN_CA_DVL_BRE_MAINT/Modules/XStatic/WebContent/scripts/rpui/vendor/webcam.min.js",
+		"/P/AXN/Deployments/LoginPage/Dev/js/variables.js",
+		"/C/DVL29/AXN_CA_DVL_BRE_MAINT/Modules/XStatic/WebContent/jQuery/scripts/jquery.jqGrid.min.js",
+		"/P/AXN/Deployments/LoginPage/Dev/js/login.js",
+		"/C/Users/Petr.Travnik/Downloads/personal/custom.css/custom.production.css",
+		"/C/xampp/htdocs/av/wp-content/themes/enfold/css/custom.css",
+		"/C/xampp/htdocs/export/js/claimexport.js",
+		"/C/xampp/htdocs/review/scss/photogallery_layout/_gallery-scroller.scss",
+		"/C/xampp/htdocs/review/scss/photogallery_layout/_footer.scss",
+		"/C/xampp/htdocs/review/scss/components/_filebrowser-module.scss",
+		"/C/xampp/htdocs/review/scss/components/_info.scss",
+		"/C/xampp/htdocs/review/scss/components/_files-module.scss",
+		"/C/performance/css/source/compare/global_old.css",
+		"/C/performance/css/source/compare/global_new.css",
+		"/C/xampp/htdocs/review/scss/layout/_structure.scss",
+		"/C/xampp/htdocs/review/scss/base/_variables.scss",
+		"/C/xampp/htdocs/review/review.html",
+		"/C/xampp/htdocs/review/css/global.css",
+		"/C/DVL29/AXN_CA_DVL_BRE_MAINT/Modules/XStatic/WebContent/styles/rpui/global.css",
+		"/C/xampp/htdocs/review/files.html",
+		"/C/xampp/htdocs/review/scss/components/_report.scss",
+		"/C/xampp/htdocs/review/scss/components/_select.scss",
+		"/C/xampp/htdocs/review/scss/base/_mixins.scss",
+		"/C/xampp/htdocs/review/htm/fileBrowser.htm",
+		"/C/xampp/htdocs/review/htm/filesModule.htm",
+		"/C/xampp/htdocs/review/scss/components/_jquery_ui.scss",
+		"/C/xampp/htdocs/upload/js/jquery.fileupload-jquery-ui.js",
+		"/C/xampp/htdocs/review/scss/global.scss",
+		"/C/xampp/htdocs/review/js/rpui.js",
+		"/C/xampp/htdocs/review/scss/photogallery_layout/_navigation.scss",
+		"//10.66.202.64/build/tmp/BLD019213/axn_temp/modules/public_html/brewebui/clickcommon/scripts/bre_dispatchtaskinfo.js",
+		"/P/AXN/Deployments/scripts/bre_dispatchtaskinfo.js",
+		"//10.66.202.64/build/tmp/BLD019213/axn_temp/modules/public_html/brewebui/clickcommon/scripts/bre_fnolsubmit.js",
+		"/C/xampp/htdocs/review/index.html",
+		"/C/DVL29/AXN_CA_DVL_BRE_MAINT/Modules/BREWebUI/ViewController/public_html/clickcommon/scripts/bre_fnolsubmit.js",
+		"/C/xampp/htdocs/review/scss/components/_actions.scss",
+		"/C/xampp/htdocs/review/scss/photogallery_layout/_header.scss",
+		"/C/xampp/htdocs/review/js/filebrowser",
+		"/C/xampp/htdocs/review/js/vendor/selectize.min.js",
+		"/C/xampp/htdocs/review/approve.html",
+		"/C/xampp/htdocs/review/scss/layout/_header.scss",
+		"/C/xampp/htdocs/review/scss/components/_canvas.scss",
+		"/C/xampp/htdocs/review/js/vendor/jquery.fileupload.js",
+		"/C/Users/Petr.Travnik/AppData/Roaming/Sublime Text 2/Packages/Default/Default (Windows).sublime-keymap",
+		"/C/Users/Petr.Travnik/AppData/Roaming/Sublime Text 2/Packages/User/Default (Windows).sublime-keymap",
+		"/C/xampp/htdocs/review/comments.html",
+		"/C/xampp/htdocs/review/js/vendor/jquery.iframe-transport.js",
+		"/C/xampp/htdocs/review/scss/vendor/font-awesome/scss/_variables.scss",
+		"/C/xampp/htdocs/review/scss/vendor/font-awesome/scss/_path.scss",
+		"/C/xampp/htdocs/review/scss/vendor/font-awesome/scss/font-awesome.scss",
+		"/C/xampp/htdocs/review/js/reviewmodule.js",
+		"/C/xampp/htdocs/review/scss/components/_gallery-scroller.scss",
+		"/C/DVL29/AXN_CA_DVL_BRE_MAINT/Modules/BREWebUI/ViewController/public_html/clickcommon/scripts/bre_dispatchtaskinfo.js",
+		"/C/DEV_R29.1/axn_temp/modules/public_html/brewebui/clickcommon/scripts/bre_oegvehicleidentification.js",
+		"/C/xampp/htdocs/review/scss/base/_animations.scss",
+		"/C/xampp/htdocs/review/project.sublime-project",
+		"/C/DEV_R29.1/AXN_CA_DVL_BRE_MAINT_HTALUKDER_29.1/Modules/XStatic/WebContent/scripts/rpui/reviewmodule.js",
+		"/C/DEV_R29.1/AXN_CA_DVL_BRE_MAINT_HTALUKDER_29.1/Modules/BREWebUI/ViewController/public_html/clickcommon/scripts/bre_estimatesearch.js",
+		"/C/DVL29/axn_temp/modules/public_html/xstatic/scripts/rpui/reviewmodule.js",
+		"/C/DEV_R29.1/AXN_CA_DVL_BRE_MAINT_HTALUKDER_29.1/Modules/BREWebUI/ViewController/public_html/clickcommon/scripts/bre_oegvehicleidentification.js",
+		"/C/xampp/htdocs/login2/index.html",
+		"/C/xampp/htdocs/login2/js/login.js",
+		"/C/DEV_R29.1/AXN_CA_DVL_BRE_MAINT_HTALUKDER_29.1/Modules/XStatic/WebContent/jQuery/scripts/jquery-1.7.2.min (2).js",
+		"/C/DEV_R29.1/AXN_CA_DVL_BRE_MAINT_HTALUKDER_29.1/Modules/XStatic/WebContent/scripts/jquery/jquery-1.5.1.min.js",
+		"/C/xampp/htdocs/review/js/vendor/jquery-ui.min.js",
+		"/C/DEV_R28.1/AXN_DVL_BRE_HEMI_CANADA_R28.1_HTALUKDER/Modules/XStatic/WebContent/scripts/rpui/imageviewer.js",
+		"/C/xampp/htdocs/review/scss/base/_fonts.scss",
+		"/C/xampp/htdocs/review/notapprove.html",
+		"/C/xampp/htdocs/review/scss/components/_comments-module.scss",
+		"/C/AXNR29/AXN_DVL_BRE_HEMI_CANADA/Modules/XStatic/WebContent/scripts/rpui/reviewmodule.js",
+		"/C/DEV_R29.1/AXN_CA_DVL_BRE_MAINT_HTALUKDER_29.1/Modules/XStatic/WebContent/scripts/rpui/imageviewer.js",
+		"/C/AXNR29/AXN_DVL_BRE_HEMI_CANADA/Modules/XStatic/WebContent/scripts/rpui/imageviewer.js",
+		"/C/DEV_R29.1/AXN_CA_DVL_BRE_MAINT_HTALUKDER_29.1/Modules/XStatic/WebContent/scripts/rpui/rpui.js",
+		"/C/AXNR29/AXN_DVL_BRE_HEMI_CANADA_PETR_TRAVNIK/Modules/XStatic/WebContent/scripts/rpui/reviewmodule.js",
+		"/C/AXNR29/AXN_DVL_BRE_HEMI_CANADA_PETR_TRAVNIK/Modules/BREWebUI/ViewController/public_html/clickcommon/scripts/bre_resourcedetailsajax.js",
+		"/C/AXNR29/AXN_DVL_BRE_HEMI_CANADA_PETR_TRAVNIK/Modules/XStatic/WebContent/scripts/rpui/rpui.js",
+		"/C/DEV_R29.1/AXN_CA_DVL_BRE_MAINT_HTALUKDER_29.1/Modules/XStatic/WebContent/scripts/rpui/commentmodule.js",
+		"/C/promote/bre_fullscreenreviewviewerAction.js",
+		"/C/DEV_R28.1/AXN_DVL_BRE_HEMI_CANADA_R28.1_HTALUKDER/Modules/XStatic/WebContent/scripts/rpui/commentmodule.js",
+		"/C/DEV_R28.1/AXN_DVL_BRE_HEMI_CANADA_R28.1_HTALUKDER/Modules/XStatic/WebContent/scripts/rpui/reviewmodule.js",
+		"/C/DEV_R28.1/AXN_DVL_BRE_HEMI_CANADA_R28.1_HTALUKDER/Modules/XStatic/WebContent/scripts/rpui/rpui.js",
+		"/C/xampp/htdocs/review/scss/base/_reset.scss",
+		"/C/xampp/htdocs/review/scss/vendor/_selectize.scss",
+		"/C/DEV_R28.1/AXN_DVL_BRE_HEMI_CANADA_R28.1_HTALUKDER/Modules/XStatic/WebContent/scripts/rpui/vendor/selectize.min.js",
+		"/C/xampp/htdocs/review/scss/photogallery_layout/_canvas.scss",
+		"/C/xampp/htdocs/review/js/commentmodule.js",
+		"/C/xampp/htdocs/review/js/vendor/select.js",
+		"/C/xampp/htdocs/review/scss/reinspection/_main.scss",
+		"/C/Users/PETR~1.TRA/AppData/Local/Temp/Rar$DRa0.007/jquery-ui-1.11.2.custom/jquery-ui.css",
+		"/C/xampp/htdocs/review/reinspection.html",
+		"/C/xampp/htdocs/review/js/reinspection.js",
+		"/C/xampp/htdocs/review/js/select.js",
+		"/C/Users/Petr.Travnik/Downloads/Traverlers Homepage/Traverlers Homepage/newyork.html",
+		"/C/Users/Petr.Travnik/Downloads/Traverlers Homepage/Traverlers Homepage/main.css",
+		"/C/xampp/htdocs/review/js/main.js",
+		"/C/Users/Petr.Travnik/Downloads/jquery-ui-1.11.2.custom/jquery-ui.css",
+		"/C/xampp/htdocs/review/pdf-example.html",
+		"/C/Users/Petr.Travnik/Downloads/Traverlers Homepage/Traverlers Homepage/js/gamma.js",
+		"/C/Users/PETR~1.TRA/AppData/Local/Temp/Rar$DRa0.369/Styling_Select/js/select.js",
+		"/C/Users/PETR~1.TRA/AppData/Local/Temp/Rar$DRa0.547/Styling_Select/js/select.js",
+		"/C/xampp/htdocs/review/scss/layout/_info.scss",
+		"/C/xampp/htdocs/review/scss/layout/_navigation.scss",
+		"/C/xampp/htdocs/review/scss/layout/_footer.scss",
+		"/C/xampp/htdocs/review/scss/layout/info.scss",
+		"/C/xampp/htdocs/review/scss/layout/_report.scss",
+		"/C/xampp/htdocs/review/scss/layout/_actions.scss",
+		"/C/Sites/AUDANET-IMAGE-VIEWER/js/vendor/jquery-ui-1.10.4.js",
+		"/C/Sites/AUDANET-IMAGE-VIEWER/js/vendor/jquery.mousewheel.min.js",
+		"/C/Sites/AUDANET-IMAGE-VIEWER/js/vendor/jquery.ui.touch-punch.min.js",
+		"/C/Users/Radley.Dioso/Desktop/audanet-styles.css",
+		"/C/Sites/AUDANET-IMAGE-VIEWER/pdf-example.html",
+		"/C/Sites/AUDANET-IMAGE-VIEWER/2.html",
+		"/C/Sites/AUDANET-IMAGE-VIEWER/index.html"
+	],
+	"find":
+	{
+		"height": 22.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"reinspect",
+			"reinspection",
+			"reinspe",
+			"clearRect",
+			"putimage",
+			"resetAllParame",
+			"canvas.trans",
+			"rotateCanva",
+			"function drawImage",
+			"drawImage",
+			"reset",
+			"zoomControl",
+			".info-selected",
+			"Image ",
+			"ctx.draw",
+			"imageOffsetX",
+			"drawWithSpinner",
+			"redrawZoomRotate",
+			"contrastImage",
+			"drawImage",
+			"drawWithSpinner",
+			"redrawZoomRotate",
+			"zoomEnabled",
+			"updateImage",
+			"zoomControl",
+			"getWidthHeight",
+			"drawImage",
+			"drawWithSpinner",
+			"updateImage",
+			"zoomControl",
+			"taskId",
+			"url",
+			"Error",
+			"photogallery_overlay",
+			"drawWithSpinner",
+			"redrawImage",
+			"drawImage",
+			"resetAllParameters",
+			"resetButtons",
+			"initThumbnails",
+			"imageview",
+			"keydown",
+			"something",
+			"taskId",
+			"preventDefault",
+			"keydownValid",
+			"commentContainer",
+			"valid",
+			"magic",
+			"progress",
+			"commentC",
+			"attId",
+			"post",
+			"commen",
+			"keydownValid",
+			"console.log(document.act",
+			"keydownVal",
+			"keydownVa",
+			"delete",
+			"uploadFilesInput",
+			"php",
+			"fileupload",
+			"openConfirmInit",
+			"#info",
+			"info",
+			"recomputeClaimSummary",
+			"console",
+			"recomputeClaimSummary",
+			"initResizing",
+			"comment",
+			"data-",
+			"FullScreenReview",
+			"deleteImage",
+			"upload",
+			"loadCookies",
+			"resizeSections",
+			"refreshGrid",
+			"control",
+			"$",
+			"focus()",
+			"focus(",
+			"focus",
+			"index",
+			"load",
+			"commentContainer",
+			"commentCo",
+			"comment",
+			"fullreview",
+			"FullScreenReview",
+			"object",
+			"iframe",
+			".jengine",
+			"resizeRecomputeResizing",
+			"setresizer",
+			"moveResize",
+			"setResizerContainments",
+			"+=2",
+			"2",
+			"infowidth",
+			"2",
+			"bre",
+			"transform",
+			"assignReinse",
+			"chrom",
+			"confirm",
+			"console.log",
+			"log(",
+			"log",
+			"console",
+			"titleba",
+			"cursor",
+			"task",
+			"cookie",
+			"+=",
+			"style",
+			"sans",
+			"open",
+			"addCommen",
+			"box-shad",
+			"prin",
+			"print",
+			"printG",
+			"printg",
+			"f7f7f7",
+			"selectize-inputa",
+			"selectize-input",
+			"selectize-inputaasdfsdafasdfas",
+			"disabl"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"ClaimSummary",
+			"ext.find",
+			"ClaimSummary",
+			"selectize-input",
+			"selectize-inputaasdfsdafasdfas",
+			"selectize-input",
+			"selectize-inputaasdfsdafasdfas",
+			"font-path",
+			"",
+			"'#{$path}",
+			"",
+			"$path'",
+			"RPUI",
+			"th",
+			"<td>",
+			"</td>",
+			"<td>",
+			"</tr>",
+			"<tr>",
+			"<span class=\"row\">",
+			"p",
+			"</span>",
+			"<span>",
+			"<p></p>",
+			"</dd>",
+			"<dd>",
+			"</dt>",
+			"<dt>",
+			"",
+			"dl",
+			";",
+			"images"
+		],
+		"reverse": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2238,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								355,
+								355
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "style.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1149,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								189,
+								189
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 2,
+					"file": "js/script.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4225,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2280,
+								2280
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "js/detect.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 12963,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 42.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "js/config.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4821,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 22.0
+	},
+	"input":
+	{
+		"height": 35.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.353546910755,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 124.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "project.sublime-project",
+	"replace":
+	{
+		"height": 40.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+		"last_automatic_layout":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		]
+	},
+	"show_minimap": false,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 221.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

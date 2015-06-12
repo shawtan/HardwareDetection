@@ -3,6 +3,7 @@ function configureIE() {
 
 	if (!properties['browser'].pass) {
 		$('#ie-sites').html('Internet Explorer required');
+		$('#ie-sites').addClass('fail');
 		return;
 	}
 
@@ -33,7 +34,6 @@ function configureIE() {
 	try {
 		var oWSS = new ActiveXObject("WScript.Shell");
 		oWSS.RegWrite(Regpath + "\\apusolutions.com" +"\\","");
-		var errorFree = true;
 
 		for (var i=0; i<sites.length; i++) {
 			oWSS.RegWrite(Regpath + sites[i].key+"\\","");
@@ -42,12 +42,11 @@ function configureIE() {
 		}
 	} catch (e) {
 		alert('Error trying to write "' + sites[i].key );
-		errorFree = false;
+		return;
 	}
 
-	if (errorFree){
-		alert("IE trusted sites successfully added!");
-	}
+	alert("Internet Explorer trusted sites successfully added!");
+
 }
 
 function configureJavaExceptions() {
@@ -62,7 +61,8 @@ function configureJavaExceptions() {
 	"https://*.audatex.ca"];
 
 	if (!properties['browser'].pass) {
-		$('#java-sites').html('IE required');
+		$('#java-sites').html('Internet Explorer required');
+		$('#java-sites').addClass('fail');
 		return;
 	}
 
@@ -111,7 +111,8 @@ function configureJavaSecurity() {
 
 
 	if (!properties['browser'].pass) {
-		$('#java-securirt').html('IE required');
+		$('#java-security').html('Internet Explorer required');
+		$('#java-security').addClass('fail');
 		return;
 	}
 
@@ -160,26 +161,3 @@ function createShortcut() {
 	}
 
 }
-
-function makeFile(){
-
-
-// var loc = new ActiveXObject("WbemScripting.SWbemLocator");
-// var svc = loc.ConnectServer(".", "root\\cimv2");
-// coll = svc.ExecQuery("select * from Win32_OperatingSystem");
-// var items = new Enumerator(coll);
-
-// while (!items.atEnd())
-// {
-//    console.log(items.item().ServicePackMajorVersion);
-//    console.log(items.item().ServicePackMinorVersion);
-//     items.moveNext();
-// }
-    // }
-/*
-    file = fso.OpenTextFile("")
-
-    thefile=fso.CreateTextFile("C:\\Git\\MyFile.txt",true);
-
-    thefile.close()*/
- }
