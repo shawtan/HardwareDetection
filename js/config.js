@@ -41,7 +41,7 @@ function configureIE() {
 			console.log("written"+sites[i].key);
 		}
 	} catch (e) {
-		alert('Error trying to write "' + sites[i].key );
+		alert('Error adding sites');
 		return;
 	}
 
