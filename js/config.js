@@ -10,11 +10,6 @@ function configureIE() {
 	Regpath = "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\ZoneMap\\Domains";
 
 	sites = [
-	{key:          "\\adpclaims.com",
-	name:            "https",
-	type:            "REG_DWORD",
-	data:            0x2},
-	// {key:          "\\apusolutions.com"},
 	{key:          "\\apusolutions.com\\www",
 	// value: 0,
 	name:            "https",
@@ -25,10 +20,6 @@ function configureIE() {
 	name:            "*",
 	type:            "REG_DWORD",
 	data:            0x2},
-	{key:          "\\audatexsolutions.com",
-	name:            "https",
-	type:            "REG_DWORD",
-	data:            0x2}
 	];
 
 	try {
@@ -51,14 +42,8 @@ function configureIE() {
 
 function configureJavaExceptions() {
 
-	var sites = ["https://platform.audatex.com/bre",
-	"https://cloud.audatex.ca",
-	"https://platform.audatex.ca",
-	"https://www.apusolutions.com",
-	"https://adpclaims.com",
-	"https://adpclaims.net",
-	"https://audatexsolutions.com",
-	"https://*.audatex.ca"];
+	var sites = ["https://platform.audatex.ca/bre",
+	"https://platform.audatex.ca"];
 
 	if (!properties['browser'].pass) {
 		$('#java-sites').html('Internet Explorer required');
@@ -78,7 +63,7 @@ function configureJavaExceptions() {
 		dir += "\\AppData\\LocalLow\\Sun\\Java\\Deployment\\security\\exception.sites";
 
 		var fso = new ActiveXObject("Scripting.FileSystemObject");
-		var file = fso.OpenTextFile(dir, 8);
+		var file = fso.OpenTextFile(dir, 8, true);
 
 		for (var i=0; i<sites.length; i++){
 			file.WriteLine(sites[i]);

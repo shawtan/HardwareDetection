@@ -10,10 +10,10 @@ function detectPopup() {
 
 /*
 * Determine if the browser used passes
-* Requirement: IE 8.0+
+* Requirement: IE 10.0+
 */
 function detectBrowser() {
-
+	var requires = 10;
 	var userAgt = navigator.userAgent;
 	var i = userAgt.indexOf('Trident');
 	if (i >=0 ) {
@@ -27,7 +27,7 @@ function detectBrowser() {
 		properties["browser"].version = bowser.version;
 	}
 	
-	properties["browser"].pass = (bowser.msie !== undefined && parseFloat(properties["browser"].version) >= 8.0);
+	properties["browser"].pass = (bowser.msie !== undefined && parseFloat(properties["browser"].version) >= properties['browser'].requires.version);
 }
 
 /*
@@ -53,7 +53,7 @@ function detectScreen() {
 
 	properties["screen"].version = screen.colorDepth + "-bit colour"
 
-	properties['screen'].pass = (screenW >= 1280 && screenH >= 800);
+	properties['screen'].pass = (screenW >= properties['screen'].requires.width && screenH >= properties['screen'].requires.height);
 }
 
 /*
@@ -69,9 +69,9 @@ function detectOS() {
 	{s:'Windows 98', r:/(Windows 98|Win98)/, pass:false},
 	{s:'Windows CE', r:/Windows CE/, pass:false},
 	{s:'Windows 2000', r:/(Windows NT 5.0|Windows 2000)/, pass:false},
-	{s:'Windows XP', r:/(Windows NT 5.1|Windows XP)/, pass:true},
+	{s:'Windows XP', r:/(Windows NT 5.1|Windows XP)/, pass:false},
 	{s:'Windows Server 2003', r:/Windows NT 5.2/, pass:false},
-	{s:'Windows Vista', r:/Windows NT 6.0/, pass:true},
+	{s:'Windows Vista', r:/Windows NT 6.0/, pass:false},
 	{s:'Windows 7', r:/(Windows 7|Windows NT 6.1)/, pass:true},
 	{s:'Windows 8.1', r:/(Windows 8.1|Windows NT 6.3)/, pass:true},
 	{s:'Windows 8', r:/(Windows 8|Windows NT 6.2)/, pass:true},
@@ -94,7 +94,7 @@ function detectOS() {
 		var cs = clientStrings[id];
 		if (cs.r.test(navigator.userAgent)) {
 			properties["os"].value = cs.s;
-			properties["os"].pass = cs.pass;
+			properties["os"].pass = properties['os'].requires.indexOf(cs.s) > -1;
 			return;
 		}
 	}
@@ -102,6 +102,7 @@ function detectOS() {
 
 }
 
+/*
 function detectServicePack() {
 
 	// var sp = javaApp.getServicePack();
@@ -126,7 +127,7 @@ function detectServicePack() {
 			break;
 	}
 
-}
+}*/
 
 function detectPDF() {
 
@@ -140,7 +141,7 @@ function detectPDF() {
 			var ver = parseFloat(v.substring(v.indexOf('=')+1));
 			properties["pdf"].value = 'Adobe Reader';
 			properties["pdf"].version = ver;
-			properties["pdf"].pass = (ver >= 9);
+			properties["pdf"].pass = (ver >= properties['pdf'].requires.version);
 			return;
 		} catch (e) {
 
@@ -161,7 +162,7 @@ function detectPDF() {
 	properties["pdf"].version = p.version;
 
 	if (p.name.toUpperCase().indexOf('ADOBE') >=0) {
-		properties["pdf"].pass = (parseInt(p.version,10) >= 9);
+		properties["pdf"].pass = (parseInt(p.version,10) >= properties['pdf'].requires.version);
 	} else {
 		properties["pdf"].pass = false;
 
@@ -174,7 +175,7 @@ function detectLang() {
 	properties["lang"].value = lang;
 
 	lang = lang.toLowerCase();
-	properties["lang"].pass = (lang == 'en-ca' || lang == 'fr-ca');
+	properties["lang"].pass = properties['lang'].requires.indexOf(lang) > -1;
 	
 }
 
@@ -218,10 +219,10 @@ function detectJava() {
 	// 	return;
 	// }
 
-	if (major > 7) {
+	if (major > properties['java'].requires.majorVersion) {
 		properties['java'].pass = true;
 		return;
-	} else if (major < 7) {
+	} else if (major < properties['java'].requires.majorVersion) {
 		properties['java'].pass = false;
 		return;		
 	}
@@ -229,7 +230,7 @@ function detectJava() {
 	v = v.substring(v.indexOf('_')+1);
 	var rev = parseInt(v,10);
 
-	if (rev >= 71) {
+	if (rev >= properties['java'].requires.minorVersion) {
 		properties['java'].pass = true;
 		return;
 	} else {
@@ -296,7 +297,7 @@ function detectCPU() {
 		properties["cpu"].version = ((cpu+5)/1000).toPrecision(3) + " GHz";
 	}
 	// console.log("cpu= "+cpu);
-	properties["cpu"].pass = (cpu >= 1990); //Rounding*/
+	properties["cpu"].pass = (cpu >= properties['cpu'].requires.MHz); //Rounding*/
 
 }
 
@@ -314,7 +315,7 @@ function detectRAM() {
 
 	properties["ram"].value = (ram / 1073741824 ).toFixed(1) + " GB";
 
-	properties["ram"].pass = (ram >= 2147483648);	//2^30
+	properties["ram"].pass = (ram >= properties['ram'].requires.size);	//2^30
 
 }
 
@@ -333,7 +334,7 @@ function detectHD() {
 
 	properties["hd"].value = (hd / 1000000000).toPrecision(3) + " GB Available";
 
-	properties["hd"].pass = (hd >= 5000000000);
+	properties["hd"].pass = (hd >= properties['hd'].requires.free);
 
 	// var total = javaApp.getHardDriveTotal();
 	properties["hd"].version = (total / 1000000000).toPrecision(3) + " GB Hard Drive"
@@ -487,14 +488,12 @@ function detectSpeed() {
 
 		if (speed > 500 * 1000) {	// Greater than 500kb/s
 			properties['speed'].value = "Fast";
-			properties['speed'].pass = true;
 		} else if (speed > 1000) {	// Units in kb/s
 			properties['speed'].value = (speed/1000).toFixed(2) + "kb/s";
-			properties['speed'].pass = (speed > 128*1000);
 		} else {					// Speed is in b/s ... that's really slow
 			properties['speed'].value = speed.toFixed(2) + "b/s"
-			properties['speed'].pass = false;
 		}
+		properties['speed'].pass = (speed > properties['speed'].requires.speed);
 
 		drawTable();
 	}

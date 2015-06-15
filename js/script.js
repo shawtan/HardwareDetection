@@ -3,18 +3,18 @@ $( document ).ready( function() {
 	addButtons();
 
 	// The requirements, and what software/hardware the user has
-	properties = {"js":{str:"JavaScript", req:"Enabled", value:"Enabled", version:null, pass:true, url:"http://activatejavascript.org/en/instructions/ie"},
-		"java":{str:"Java", req:"1.7.71+, 32-bit", value:"Unknown", version:null, pass:null, url:"http://java.com/en/download/"},
-		"browser":{str:"Browser", req:"Internet Explorer 8.0+", value:"Unknown", version:null, pass:null, url:"http://windows.microsoft.com/en-ca/internet-explorer/download-ie"},
-		"screen":{str:"Screen Resolution", req:"1280x800 or better", value:"Unknown", version:null, pass:null, url:null},
-		"os":{str:"Operating System", req:"Windows XP or better", value:"Unknown", version:null, pass:null, url:null},
-		"cpu":{str:"CPU", req:"2.0+ GHz", value:"Unknown", version:null, pass:null, url:null},
-		"ram":{str:"RAM", req:"2+ GB", value:"Unknown", version:null, pass:null, url:null},
-		"hd":{str:"Hard Drive", req:"5+ GB available", value:"Unknown", version:null, pass:null, url:null},
-		"gpu":{str:"Video Card", req:"Intel 945/965, ATL Radeon R300 (9xxx), Nvidia Geforce FX (5xxx), OpenGL 1.5", value:"Unknown", version:null, pass:null, url:"http://www.videocardbenchmark.net/gpu_list.php"},
-		"speed":{str:"Internet Speed", req:"128 kb/s or higher", value:"Unknown", version:null, pass:null, url:null},
-		"pdf":{str:"PDF Reader", req:"Adobe Reader 9.0+", value:"Unknown", version:null, pass:null, url:"http://get.adobe.com/reader/"},
-		"lang":{str:"Language", req:"Canadian English or French", value:"Unknown", version:null, pass:null, url:"http://windows.microsoft.com/en-ca/windows-vista/change-your-internet-explorer-language-settings"}};
+	// properties = {"js":{str:"JavaScript", req:"Enabled", value:"Enabled", version:null, pass:true, url:"http://activatejavascript.org/en/instructions/ie"},
+	// 	"java":{str:"Java", req:"1.7.71+, 32-bit", value:"Unknown", version:null, pass:null, url:"http://java.com/en/download/"},
+	// 	"browser":{str:"Browser", req:"Internet Explorer 10+", value:"Unknown", version:null, pass:null, url:"http://windows.microsoft.com/en-ca/internet-explorer/download-ie"},
+	// 	"screen":{str:"Screen Resolution", req:"1280x800 or better", value:"Unknown", version:null, pass:null, url:null},
+	// 	"os":{str:"Operating System", req:"Windows 7 or better", value:"Unknown", version:null, pass:null, url:null},
+	// 	"cpu":{str:"CPU", req:"2.0+ GHz", value:"Unknown", version:null, pass:null, url:null},
+	// 	"ram":{str:"RAM", req:"2+ GB", value:"Unknown", version:null, pass:null, url:null},
+	// 	"hd":{str:"Hard Drive", req:"5+ GB available", value:"Unknown", version:null, pass:null, url:null},
+	// 	"gpu":{str:"Video Card", req:"Intel 945/965, ATL Radeon R300 (9xxx), Nvidia Geforce FX (5xxx), OpenGL 1.5", value:"Unknown", version:null, pass:null, url:"http://www.videocardbenchmark.net/gpu_list.php"},
+	// 	"speed":{str:"Internet Speed", req:"128 kb/s or higher", value:"Unknown", version:null, pass:null, url:null},
+	// 	"pdf":{str:"PDF Reader", req:"Adobe Reader 9.0+", value:"Unknown", version:null, pass:null, url:"http://get.adobe.com/reader/"},
+	// 	"lang":{str:"Language", req:"Canadian English or French", value:"Unknown", version:null, pass:null, url:"http://windows.microsoft.com/en-ca/windows-vista/change-your-internet-explorer-language-settings"}};
 
 	drawTable();
 	detect();
@@ -97,7 +97,7 @@ function detect() {
 	if ("ActiveXObject" in window && detectActiveX()) {
 		detectHD();
 		detectRAM();
-		detectServicePack();
+		// detectServicePack();
 		detectCPU();
 		detectGPU();
 	}
