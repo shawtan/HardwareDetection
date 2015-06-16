@@ -65,7 +65,7 @@ function drawTable() {
 	$('#property-status').html('');
 	for (var p in properties) {
 		$('#property-status').append(
-			'<tr onclick="clickHandler" id="'+p+'"> <th scope="row">' + properties[p].str
+			'<tr id="'+p+'"> <th scope="row">' + properties[p].str
 			+ (properties[p].req?'<div class="version small">Requirement: ' + properties[p].req + '</div>':'')
 			+ '</th> <td class="value">' + properties[p].value 
 			+ (properties[p].version?'<div class="version small">' + properties[p].version + '</div>':'')

@@ -1,3 +1,15 @@
+function contains(arr, val) {
+
+	for (var i = arr.length - 1; i >= 0; i--) {
+		if (arr[i] === val) {
+			return true;
+		}
+	};
+	return false;
+
+}
+
+
 function detectPopup() {
 
 	// Try to open a pop-up. Hopefully it triggers pop-up settings
@@ -94,7 +106,7 @@ function detectOS() {
 		var cs = clientStrings[id];
 		if (cs.r.test(navigator.userAgent)) {
 			properties["os"].value = cs.s;
-			properties["os"].pass = properties['os'].requires.indexOf(cs.s) > -1;
+			properties["os"].pass = contains(properties['os'].requires,cs.s);
 			return;
 		}
 	}
@@ -175,7 +187,7 @@ function detectLang() {
 	properties["lang"].value = lang;
 
 	lang = lang.toLowerCase();
-	properties["lang"].pass = properties['lang'].requires.indexOf(lang) > -1;
+	properties["lang"].pass = contains(properties['lang'].requires,lang) > -1;
 	
 }
 
@@ -487,7 +499,7 @@ function detectSpeed() {
 		// console.log((speed/1000000).toFixed(2) + "Mb/s");
 
 		if (speed > 500 * 1000) {	// Greater than 500kb/s
-			properties['speed'].value = "Fast";
+			properties['speed'].value = "Faster than 500kbps";
 		} else if (speed > 1000) {	// Units in kb/s
 			properties['speed'].value = (speed/1000).toFixed(2) + "kb/s";
 		} else {					// Speed is in b/s ... that's really slow

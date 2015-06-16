@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"requi",
+				"requirement"
+			],
+			[
+				"req",
+				"requires"
+			],
+			[
+				"pro",
+				"properties"
+			],
+			[
+				"click",
+				"clickHandler"
+			],
+			[
 				"scroll",
 				"scrollOptimize	(num)"
 			],
@@ -391,7 +407,7 @@
 			"file": "index.html",
 			"settings":
 			{
-				"buffer_size": 2238,
+				"buffer_size": 2282,
 				"line_ending": "Windows"
 			}
 		},
@@ -399,7 +415,7 @@
 			"file": "style.css",
 			"settings":
 			{
-				"buffer_size": 1149,
+				"buffer_size": 1196,
 				"line_ending": "Windows"
 			}
 		},
@@ -407,7 +423,7 @@
 			"file": "js/script.js",
 			"settings":
 			{
-				"buffer_size": 4225,
+				"buffer_size": 4367,
 				"line_ending": "Windows"
 			}
 		},
@@ -415,7 +431,7 @@
 			"file": "js/detect.js",
 			"settings":
 			{
-				"buffer_size": 12963,
+				"buffer_size": 13386,
 				"line_ending": "Windows"
 			}
 		},
@@ -423,7 +439,7 @@
 			"file": "js/config.js",
 			"settings":
 			{
-				"buffer_size": 4821,
+				"buffer_size": 3908,
 				"line_ending": "Windows"
 			}
 		}
@@ -530,6 +546,8 @@
 	},
 	"file_history":
 	[
+		"/C/HardwareDetection/js/requirments.js",
+		"/C/Users/Xiao.Tan/Documents/Intact Estimate Review Results/query_for_IntactEstimate.sql",
 		"/C/DVL29/AXN_CA_DVL_BRE_MAINT/Modules/XStatic/WebContent/scripts/rpui/rpui.js",
 		"/C/DVL29/AXN_CA_DVL_BRE_MAINT/Modules/XStatic/WebContent/scripts/rpui/claimexport.js",
 		"/C/DVL29/AXN_CA_DVL_BRE_MAINT/Modules/XStatic/WebContent/scripts/rpui/filebrowser.js",
@@ -655,26 +673,34 @@
 		"/C/Sites/AUDANET-IMAGE-VIEWER/js/vendor/jquery.mousewheel.min.js",
 		"/C/Sites/AUDANET-IMAGE-VIEWER/js/vendor/jquery.ui.touch-punch.min.js",
 		"/C/Users/Radley.Dioso/Desktop/audanet-styles.css",
-		"/C/Sites/AUDANET-IMAGE-VIEWER/pdf-example.html",
-		"/C/Sites/AUDANET-IMAGE-VIEWER/2.html",
-		"/C/Sites/AUDANET-IMAGE-VIEWER/index.html"
+		"/C/Sites/AUDANET-IMAGE-VIEWER/pdf-example.html"
 	],
 	"find":
 	{
-		"height": 22.0
+		"height": 34.0
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 90.0,
 		"where_history":
 		[
 		]
 	},
 	"find_state":
 	{
-		"case_sensitive": false,
+		"case_sensitive": true,
 		"find_history":
 		[
+			"min-",
+			", ",
+			"\\}",
+			"\\{",
+			"{",
+			"str",
+			",value*},",
+			",value:*},",
+			"\",value:*},",
+			"IE ",
 			"reinspect",
 			"reinspection",
 			"reinspe",
@@ -792,24 +818,21 @@
 			"style",
 			"sans",
 			"open",
-			"addCommen",
-			"box-shad",
-			"prin",
-			"print",
-			"printG",
-			"printg",
-			"f7f7f7",
-			"selectize-inputa",
-			"selectize-input",
-			"selectize-inputaasdfsdafasdfas",
-			"disabl"
+			"addCommen"
 		],
 		"highlight": true,
 		"in_selection": false,
 		"preserve_case": false,
-		"regex": false,
+		"regex": true,
 		"replace_history":
 		[
+			"",
+			",\\n",
+			"\\n}",
+			"{\\n",
+			"\\nstr",
+			"Internet Explorer ",
+			"Internet Explorer",
 			"ClaimSummary",
 			"ext.find",
 			"ClaimSummary",
@@ -843,7 +866,7 @@
 			";",
 			"images"
 		],
-		"reverse": true,
+		"reverse": false,
 		"show_context": true,
 		"use_buffer2": true,
 		"whole_word": false,
@@ -861,15 +884,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2238,
+						"buffer_size": 2282,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								355,
-								355
+								2090,
+								2090
 							]
 						],
 						"settings":
@@ -878,7 +901,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 756.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -890,15 +913,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1149,
+						"buffer_size": 1196,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								189,
-								189
+								883,
+								883
 							]
 						],
 						"settings":
@@ -906,7 +929,7 @@
 							"syntax": "Packages/CSS/CSS.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 730.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
@@ -915,7 +938,7 @@
 			]
 		},
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -924,15 +947,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4225,
+						"buffer_size": 4367,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2280,
-								2280
+								2437,
+								2437
 							]
 						],
 						"settings":
@@ -941,7 +964,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 294.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 4,
@@ -953,15 +976,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 12963,
+						"buffer_size": 13386,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								13219,
+								13219
 							]
 						],
 						"settings":
@@ -970,10 +993,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 42.0,
+						"translation.y": 6276.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
@@ -982,15 +1005,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4821,
+						"buffer_size": 3908,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								1660,
+								1660
 							]
 						],
 						"settings":
@@ -999,10 +1022,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 504.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
@@ -1036,7 +1059,7 @@
 		"cols":
 		[
 			0.0,
-			0.353546910755,
+			0.454233409611,
 			1.0
 		],
 		"rows":
@@ -1058,7 +1081,7 @@
 	"project": "project.sublime-project",
 	"replace":
 	{
-		"height": 40.0
+		"height": 62.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1111,7 +1134,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 221.0,
+	"side_bar_width": 50.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
