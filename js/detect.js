@@ -352,7 +352,7 @@ function detectGPU() {
 
     for (var i = 0; i < rtn.length; i++) {
     	try {
-    		var gpu = WshShell.RegRead("HKLM\\SYSTEM\\CurrentControlSet\\Control\\Video\\"+rtn[i]+"\\0000\\AdapterDesc");
+    		var gpu = WshShell.RegRead("HKLM\\SYSTEM\\CurrentControlSet\\Control\\Video\\"+rtn[i]+"\\0000\\DriverDesc");
     		properties["gpu"].value = gpu;
     		return;
 
