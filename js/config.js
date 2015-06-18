@@ -21,7 +21,7 @@ function configureIE() {
 			name:            "*",
 			type:            "REG_DWORD",
 			data:            0x2
-		},
+		}
 	];
 
 	try {
@@ -34,7 +34,7 @@ function configureIE() {
 			// console.log("written"+sites[i].key);
 		}
 	} catch (e) {
-		alert(e);
+		// alert(e);
 		alert('Error adding sites');
 		return;
 	}
