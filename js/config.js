@@ -10,16 +10,18 @@ function configureIE() {
 	Regpath = "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\ZoneMap\\Domains";
 
 	sites = [
-	{key:          "\\apusolutions.com\\www",
-	// value: 0,
-	name:            "https",
-	type:            "REG_DWORD",
-	data:            0x2},
-	{key:          "\\audatex.ca",
-	// value: 0,
-	name:            "*",
-	type:            "REG_DWORD",
-	data:            0x2},
+		{
+			key:          "\\apusolutions.com\\www",
+			name:            "https",
+			type:            "REG_DWORD",
+			data:            0x2
+		},
+		{
+			key:          "\\audatex.ca",
+			name:            "*",
+			type:            "REG_DWORD",
+			data:            0x2
+		},
 	];
 
 	try {
@@ -32,6 +34,7 @@ function configureIE() {
 			// console.log("written"+sites[i].key);
 		}
 	} catch (e) {
+		alert(e);
 		alert('Error adding sites');
 		return;
 	}
