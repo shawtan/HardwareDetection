@@ -29,7 +29,7 @@ function configureIE() {
 		for (var i=0; i<sites.length; i++) {
 			oWSS.RegWrite(Regpath + sites[i].key+"\\","");
 			oWSS.RegWrite(Regpath + sites[i].key+"\\"+sites[i].name,sites[i].data, sites[i].type);
-			console.log("written"+sites[i].key);
+			// console.log("written"+sites[i].key);
 		}
 	} catch (e) {
 		alert('Error adding sites');
@@ -140,8 +140,8 @@ function createShortcut() {
 		shortcut.Save();
 		alert("Shortcut creation successful!");
 	} catch (err) {
-		console.log(err);
-		console.log("Shortcut failed");
+		// console.log(err);
+		// console.log("Shortcut failed");
 		alert("Failed to create shortcut");
 	}
 

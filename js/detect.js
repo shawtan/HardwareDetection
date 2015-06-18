@@ -187,7 +187,7 @@ function detectLang() {
 	properties["lang"].value = lang;
 
 	lang = lang.toLowerCase();
-	properties["lang"].pass = contains(properties['lang'].requires,lang) > -1;
+	properties["lang"].pass = contains(properties['lang'].requires,lang);
 	
 }
 
@@ -291,7 +291,7 @@ function detectActiveX() {
 		new ActiveXObject('WScript.Shell');
 		return true;
 	} catch (e) {
-		console.log(e);
+		// console.log(e);
 		return false;
 	}
 
@@ -369,7 +369,7 @@ function detectGPU() {
     		return;
 
     	} catch (e) {
-    		console.log(e);
+    		// console.log(e);
     		continue;
     	}
     };
@@ -407,41 +407,6 @@ function regGetSubKeys(strComputer, strRegPath)
       break; 
   } 
   return aNames;
-}
-
-function detectPorts() {
-
-	//Requires ports 80 and 443
-
-    var isAccessible = null;
-
-    function checkConnection(port) {
-        var url = "http://101.212.33.60:"+port+"/test/hello.html" ;
-        $.ajax({
-            url: url,
-            type: "get",
-            cache: false,
-            dataType: 'jsonp', // it is for supporting crossdomain
-            crossDomain : true,
-            asynchronous : false,
-            jsonpCallback: 'deadCode',
-            timeout : 1500, // set a timeout in milliseconds
-            complete : function(xhr, responseText, thrownError) {
-                if(xhr.status == "200") {
-                   isAccessible = true;
-                   console.log(port+" pass");
-                   properties['port'].value += port;
-                }
-                else {
-                   isAccessible = false;
-                   console.log(port+" fail");
-                }
-            }
-       });
-    }
-
-    checkConnection(80);
-    checkConnection(443);
 }
 
 /*
